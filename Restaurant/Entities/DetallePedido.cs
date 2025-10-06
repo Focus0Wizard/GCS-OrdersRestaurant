@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Restaurant.Entities;
+
+public partial class DetallePedido
+{
+    public short PedidoId { get; set; }
+
+    public short ProductoId { get; set; }
+
+    public int Cantidad { get; set; }
+
+    public decimal PrecioUnitario { get; set; }
+
+    public decimal Subtotal { get; set; }
+
+    public virtual Pedido Pedido { get; set; } = null!;
+
+    public virtual Producto Producto { get; set; } = null!;
+}
