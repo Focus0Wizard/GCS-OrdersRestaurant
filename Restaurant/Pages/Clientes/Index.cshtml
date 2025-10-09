@@ -1,0 +1,71 @@
+@page
+@using Restaurant.Entities
+@model Restaurant.Pages.Clientes.ClientesModel
+@{
+    ViewData["Title"] = "Gestión de Clientes";
+}
+
+<h2>Gestión de Clientes</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Cliente.Id" />
+
+    <div class="mb-2">
+        <label>Nombre</label>
+        <input asp-for="Cliente.Nombre" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Apellido</label>
+        <input asp-for="Cliente.Apellido" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Teléfono</label>
+        <input asp-for="Cliente.Telefono" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Correo</label>
+        <input asp-for="Cliente.Correo" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">
+        @(Model.Cliente.Id > 0 ? "Actualizar" : "Guardar")
+    </button>
+</form>
+
+<hr />
+
+<h4>Lista de clientes</h4>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Teléfono</th>
+        <th>Correo</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var c in Model.Clientes)
+    {
+        <tr>
+            <td>@c.Nombre</td>
+            <td>@c.Apellido</td>
+            <td>@c.Telefono</td>
+            <td>@c.Correo</td>
+            <td>
+                <a asp-page="./Index" asp-route-id="@c.Id" class="btn btn-warning btn-sm">Editar</a>
+
+                <form method="post" asp-page-handler="Eliminar" style="display:inline">
+                    <input type="hidden" name="id" value="@c.Id"/>
+                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

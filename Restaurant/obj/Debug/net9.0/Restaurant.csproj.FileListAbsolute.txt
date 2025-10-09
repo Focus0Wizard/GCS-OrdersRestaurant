@@ -193,3 +193,4 @@
 /home/jhonn/Documentos/Universidad/8vo_Semestre/QA/GCS-OrdersRestaurant/Restaurant/obj/Debug/net9.0/Restaurant.pdb
 /home/jhonn/Documentos/Universidad/8vo_Semestre/QA/GCS-OrdersRestaurant/Restaurant/obj/Debug/net9.0/Restaurant.genruntimeconfig.cache
 /home/jhonn/Documentos/Universidad/8vo_Semestre/QA/GCS-OrdersRestaurant/Restaurant/obj/Debug/net9.0/ref/Restaurant.dll
+/home/jhonn/Documentos/Universidad/8vo_Semestre/QA/GCS-OrdersRestaurant/Restaurant/obj/Debug/net9.0/Restaurant.sourcelink.json

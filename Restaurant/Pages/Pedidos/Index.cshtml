@@ -1,0 +1,111 @@
+@page
+@using Restaurant.Entities
+@model Restaurant.Pages.Pedidos.PedidosModel
+@{
+    ViewData["Title"] = "Gestión de Pedidos";
+}
+
+<h2>Gestión de Pedidos</h2>
+
+<form method="post">
+    <div class="mb-2">
+        <label>Cliente</label>
+        <select asp-for="Pedido.ClienteId" class="form-control">
+            <option value="">-- Seleccionar cliente --</option>
+            @foreach (var c in Model.Clientes)
+            {
+                <option value="@c.Id">@c.Nombre @c.Apellido</option>
+            }
+        </select>
+        <br>
+        <text> Registrar un nuevo cliente? </text>
+        <a asp-page="../Clientes/Index"  class="btn btn-success btn-sm">Registrar</a>
+    </div>
+
+    <div class="mb-2">
+        <label>Productos</label>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+            @for (int i = 0; i < Model.Productos.Count(); i++)
+            {
+                <tr>
+                    <td>@Model.Productos.ElementAt(i).Nombre</td>
+                    <td>@Model.Productos.ElementAt(i).Precio</td>
+                    <td>@Model.Productos.ElementAt(i).Stock</td>
+                    <td>
+                        <input type="number" name="Cantidades[@i]" value="0" class="form-control" min="0" />
+                        <input type="hidden" name="ProductoIds[@i]" value="@Model.Productos.ElementAt(i).Id" />
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Crear Pedido</button>
+</form>
+
+<hr />
+
+<h4>Lista de pedidos</h4>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Cliente</th>
+        <th>Total</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var p in Model.Pedidos)
+    {
+        <tr>
+            <td>@p.NombreCliente @p.ApellidoCliente</td>
+            <td>@p.Total</td>
+            <td>@p.FechaCreacion?.ToString("dd/MM/yyyy HH:mm")</td>
+            <td>
+                @switch(p.EstadoPedido)
+                {
+                    case 1: <text>Enviado </text> ; break;
+                    case 0: <text>Recepcionado</text>; break;
+                    case -1: <text>Cancelado</text>; break; 
+                    default: <text>Creado</text>; break;
+                }
+
+            </td>
+            <td>
+                <form method="post" asp-page-handler="Recepcionado" style="display:inline">
+                    <input type="hidden" name="id" value="@p.Id" />
+                    <button type="submit" class="btn btn-success btn-sm">Recepcionado</button>
+                </form>
+                
+                <form method="post" asp-page-handler="Enviado" style="display:inline">
+                    <input type="hidden" name="id" value="@p.Id" />
+                    <button type="submit" class="btn btn-success btn-sm">Enviar</button>
+                </form>
+
+                <form method="post" asp-page-handler="Cancelar" style="display:inline">
+                    <input type="hidden" name="id" value="@p.Id" />
+                    <button type="submit" class="btn btn-warning btn-sm">Cancelar</button>
+                </form>
+
+                @* <form method="post" asp-page-handler="Eliminar" style="display:inline"> *@
+                @*     <input type="hidden" name="id" value="@p.Id" /> *@
+                @*     <button type="submit" class="btn btn-danger btn-sm">Eliminar</button> *@
+                @* </form> *@
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
