@@ -1,0 +1,71 @@
+@page
+@using Restaurant.Entities
+@model Restaurant.Pages.Productos.ProductosModel
+@{
+    ViewData["Title"] = "Gestión de Productos";
+}
+
+<h2>Gestión de Productos</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Producto.Id" />
+
+    <div class="mb-2">
+        <label>Nombre</label>
+        <input asp-for="Producto.Nombre" class="form-control" />
+    </div>
+    
+    <div class="mb-2">
+        <label>Precio</label>
+        <input asp-for="Producto.Precio" step="0.01" class="form-control" />
+    </div>
+    
+    <div class="mb-2">
+        <label>Stock</label>
+        <input asp-for="Producto.Stock" class="form-control" />
+    </div>
+    
+    <div class="mb-2">
+        <label>Categoria ID</label>
+        <input asp-for="Producto.CategoriaId" class="form-control" />
+    </div>
+    
+    <button type="submit" class="btn btn-primary mt-2">
+        @(Model.Producto.Id > 0 ? "Actualizar" : "Guardar")
+    </button>
+</form>
+
+<hr />
+
+<h4>Lista de productos</h4>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Categoria</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var p in Model.Productos)
+    {
+        <tr>
+            <td>@p.Nombre</td>
+            <td>@p.Precio</td>
+            <td>@p.Stock</td>
+            <td>@p.CategoriaId</td>
+            <td>
+                <a asp-page="./Index" asp-route-id="@p.Id" class="btn btn-warning btn-sm">Editar</a>
+
+                <form method="post" asp-page-handler="Eliminar" style="display:inline">
+                    <input type="hidden" name="id" value="@p.Id"/>
+                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

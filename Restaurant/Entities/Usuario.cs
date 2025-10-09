@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Restaurant.Entities;
 
 public partial class Usuario
-{
+{ 
     public short Id { get; set; }
 
     public string Nombre { get; set; } = null!;
