@@ -13,13 +13,10 @@ builder.Services.AddDbContext<MyDbContext>(options =>
     ));
 
 // ------------------ REGISTRAR REPOSITORIOS Y SERVICIOS ------------------
-// Repositorio genérico
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
-// Servicios (ejemplo: ProductoService, PedidoService, etc.)
 builder.Services.AddScoped<IProductoService, ProductoService>();
-// builder.Services.AddScoped<IPedidoService, PedidoService>();
-// builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<IClienteService, ClienteService>();
 
 // ------------------ MVC / RAZOR PAGES ------------------
 builder.Services.AddRazorPages();
