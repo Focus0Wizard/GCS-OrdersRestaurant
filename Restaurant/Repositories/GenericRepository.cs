@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Restaurant.Context;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Restaurant.Context;
 
 namespace Restaurant.Repositories
 {

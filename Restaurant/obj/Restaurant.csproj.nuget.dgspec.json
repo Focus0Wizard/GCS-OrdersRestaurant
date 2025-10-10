@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/jhonn/Documentos/Universidad/8vo_Semestre/QA/GCS-OrdersRestaurant/Restaurant/Restaurant.csproj": {}
+    "/home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/Restaurant.csproj": {}
   },
   "projects": {
-    "/home/jhonn/Documentos/Universidad/8vo_Semestre/QA/GCS-OrdersRestaurant/Restaurant/Restaurant.csproj": {
+    "/home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/Restaurant.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/jhonn/Documentos/Universidad/8vo_Semestre/QA/GCS-OrdersRestaurant/Restaurant/Restaurant.csproj",
+        "projectUniqueName": "/home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/Restaurant.csproj",
         "projectName": "Restaurant",
-        "projectPath": "/home/jhonn/Documentos/Universidad/8vo_Semestre/QA/GCS-OrdersRestaurant/Restaurant/Restaurant.csproj",
-        "packagesPath": "/home/jhonn/.nuget/packages/",
-        "outputPath": "/home/jhonn/Documentos/Universidad/8vo_Semestre/QA/GCS-OrdersRestaurant/Restaurant/obj/",
+        "projectPath": "/home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/Restaurant.csproj",
+        "packagesPath": "/home/ichurri/.nuget/packages/",
+        "outputPath": "/home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/jhonn/.nuget/NuGet/NuGet.Config"
+          "/home/ichurri/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
