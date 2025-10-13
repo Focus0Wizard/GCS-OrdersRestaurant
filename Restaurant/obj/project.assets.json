@@ -2826,19 +2826,19 @@
     ]
   },
   "packageFolders": {
-    "/home/jhonn/.nuget/packages/": {}
+    "C:\\Users\\Aldrin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/jhonn/Documentos/Universidad/8vo_Semestre/QA/GCS-OrdersRestaurant/Restaurant/Restaurant.csproj",
+      "projectUniqueName": "C:\\ALDRIN\\UNIVERSIDAD\\SEMESTRE 8\\GESTION DE CALIDAD DE SISTEMAS\\SECOND\\GCS-OrdersRestaurant\\Restaurant\\Restaurant.csproj",
       "projectName": "Restaurant",
-      "projectPath": "/home/jhonn/Documentos/Universidad/8vo_Semestre/QA/GCS-OrdersRestaurant/Restaurant/Restaurant.csproj",
-      "packagesPath": "/home/jhonn/.nuget/packages/",
-      "outputPath": "/home/jhonn/Documentos/Universidad/8vo_Semestre/QA/GCS-OrdersRestaurant/Restaurant/obj/",
+      "projectPath": "C:\\ALDRIN\\UNIVERSIDAD\\SEMESTRE 8\\GESTION DE CALIDAD DE SISTEMAS\\SECOND\\GCS-OrdersRestaurant\\Restaurant\\Restaurant.csproj",
+      "packagesPath": "C:\\Users\\Aldrin\\.nuget\\packages\\",
+      "outputPath": "C:\\ALDRIN\\UNIVERSIDAD\\SEMESTRE 8\\GESTION DE CALIDAD DE SISTEMAS\\SECOND\\GCS-OrdersRestaurant\\Restaurant\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/jhonn/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Aldrin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -2904,7 +2904,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
