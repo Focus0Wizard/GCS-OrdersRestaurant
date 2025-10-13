@@ -17,53 +17,53 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Restaurant
 build_property.RootNamespace = Restaurant
-build_property.ProjectDir = C:\ALDRIN\UNIVERSIDAD\SEMESTRE 8\GESTION DE CALIDAD DE SISTEMAS\SECOND\GCS-OrdersRestaurant\Restaurant\
+build_property.ProjectDir = /home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\ALDRIN\UNIVERSIDAD\SEMESTRE 8\GESTION DE CALIDAD DE SISTEMAS\SECOND\GCS-OrdersRestaurant\Restaurant
+build_property.MSBuildProjectDirectory = /home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/ALDRIN/UNIVERSIDAD/SEMESTRE 8/GESTION DE CALIDAD DE SISTEMAS/SECOND/GCS-OrdersRestaurant/Restaurant/Pages/Clientes/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpZW50ZXNcSW5kZXguY3NodG1s
+[/home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/Pages/Clientes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50ZXMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ALDRIN/UNIVERSIDAD/SEMESTRE 8/GESTION DE CALIDAD DE SISTEMAS/SECOND/GCS-OrdersRestaurant/Restaurant/Pages/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+[/home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ALDRIN/UNIVERSIDAD/SEMESTRE 8/GESTION DE CALIDAD DE SISTEMAS/SECOND/GCS-OrdersRestaurant/Restaurant/Pages/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+[/home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ALDRIN/UNIVERSIDAD/SEMESTRE 8/GESTION DE CALIDAD DE SISTEMAS/SECOND/GCS-OrdersRestaurant/Restaurant/Pages/Pedidos/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVkaWRvc1xJbmRleC5jc2h0bWw=
+[/home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/Pages/Pedidos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGVkaWRvcy9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ALDRIN/UNIVERSIDAD/SEMESTRE 8/GESTION DE CALIDAD DE SISTEMAS/SECOND/GCS-OrdersRestaurant/Restaurant/Pages/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+[/home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ALDRIN/UNIVERSIDAD/SEMESTRE 8/GESTION DE CALIDAD DE SISTEMAS/SECOND/GCS-OrdersRestaurant/Restaurant/Pages/Productos/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdG9zXEluZGV4LmNzaHRtbA==
+[/home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/Pages/Productos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvZHVjdG9zL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ALDRIN/UNIVERSIDAD/SEMESTRE 8/GESTION DE CALIDAD DE SISTEMAS/SECOND/GCS-OrdersRestaurant/Restaurant/Pages/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[/home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ALDRIN/UNIVERSIDAD/SEMESTRE 8/GESTION DE CALIDAD DE SISTEMAS/SECOND/GCS-OrdersRestaurant/Restaurant/Pages/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ALDRIN/UNIVERSIDAD/SEMESTRE 8/GESTION DE CALIDAD DE SISTEMAS/SECOND/GCS-OrdersRestaurant/Restaurant/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+[/home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/ALDRIN/UNIVERSIDAD/SEMESTRE 8/GESTION DE CALIDAD DE SISTEMAS/SECOND/GCS-OrdersRestaurant/Restaurant/Pages/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-59epdnw5tr
+[/home/ichurri/Desktop/u/2025/2-2025/gestion-de-calidad-de-sistemas/competencia-ii/GCS-OrdersRestaurant/Restaurant/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ur010871e4
