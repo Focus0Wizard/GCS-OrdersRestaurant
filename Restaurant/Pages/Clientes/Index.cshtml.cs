@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Restaurant.Entities;
 using Restaurant.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Restaurant.Pages.Clientes
 {
@@ -18,19 +19,6 @@ namespace Restaurant.Pages.Clientes
         public Cliente Cliente { get; set; } = new();
 
         public IEnumerable<Cliente> Clientes { get; set; } = new List<Cliente>();
-
-        public async Task OnGetAsync(short? id)
-        {
-            Clientes = await _repo.GetAllAsync();
-            if (id.HasValue)
-            {
-                var cliente = await _repo.GetByIdAsync(id.Value);
-                if (cliente != null)
-                {
-                    Cliente = cliente;
-                }
-            }
-        }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -80,5 +68,31 @@ namespace Restaurant.Pages.Clientes
 
             return RedirectToPage();
         }
+        
+        public async Task OnGetAsync(short? id, string? searchTerm)
+        {
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                Clientes = await _repo.FindAsync(c =>
+                    c.Nombre.Contains(searchTerm) ||
+                    c.Apellido.Contains(searchTerm) ||
+                    c.Correo.Contains(searchTerm));
+            }
+            else
+            {
+                Clientes = await _repo.GetAllAsync();
+            }
+            
+            if (id.HasValue)
+            {
+                var cliente = await _repo.GetByIdAsync(id.Value);
+                if (cliente != null)
+                {
+                    Cliente = cliente;
+                }
+            }
+        }
+
+        
     }
 }

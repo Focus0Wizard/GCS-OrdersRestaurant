@@ -39,6 +39,14 @@
 
 <h4>Lista de clientes</h4>
 
+<form method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="searchTerm" value="@Request.Query["searchTerm"]" class="form-control" placeholder="Buscar cliente..." />
+        <button type="submit" class="btn btn-outline-primary">Buscar</button>
+        <a asp-page="./Index" class="btn btn-outline-secondary">Limpiar</a>
+    </div>
+</form>
+
 <table class="table table-striped">
     <thead>
     <tr>
