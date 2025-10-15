@@ -5,6 +5,7 @@ using Restaurant.Repositories;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
+using System.Linq;
 
 namespace Restaurant.Pages.Productos
 {
@@ -23,10 +24,22 @@ namespace Restaurant.Pages.Productos
         public IEnumerable<Producto> Productos { get; set; } = new List<Producto>();
 
         // GET: Listar productos y cargar producto a editar si viene id
-        public async Task OnGetAsync(short? id)
+        public async Task OnGetAsync(short? id, string? searchTerm)
         {
-            Productos = await _repo.GetAllAsync();
+            var productos = await _repo.GetAllAsync();
 
+            // 🔍 Si hay texto de búsqueda, filtra
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+                productos = productos.Where(p =>
+                    p.Nombre.ToLower().Contains(searchTerm) ||
+                    p.CategoriaId.ToString().Contains(searchTerm));
+            }
+
+            Productos = productos;
+
+            // Si viene un id (editar)
             if (id.HasValue)
             {
                 var producto = await _repo.GetByIdAsync(id.Value);
@@ -45,25 +58,19 @@ namespace Restaurant.Pages.Productos
 
             if (Producto.Id > 0)
             {
-                // Actualizar
                 Producto.UltimaActualizacion = DateTime.Now;
                 _repo.Update(Producto);
                 await _repo.SaveChangesAsync();
-
-                // Mantener el formulario cargado con datos actualizados
                 return RedirectToPage();
             }
             else
             {
-                // Crear
                 Producto.CreadoPor = 1;
                 Producto.FechaCreacion = DateTime.Now;
                 Producto.UltimaActualizacion = DateTime.Now;
                 Producto.Estado = 1;
                 await _repo.AddAsync(Producto);
                 await _repo.SaveChangesAsync();
-
-                // Volver a formulario vacío después de guardar
                 return RedirectToPage();
             }
         }

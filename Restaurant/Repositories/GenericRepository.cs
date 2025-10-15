@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Restaurant.Context;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
+
 
 namespace Restaurant.Repositories
 {
@@ -45,5 +47,10 @@ namespace Restaurant.Repositories
         {
             await _context.SaveChangesAsync();
         }
+
+		public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
+		{
+    		return await _dbSet.Where(predicate).ToListAsync();
+		}
     }
 }

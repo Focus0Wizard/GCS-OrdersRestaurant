@@ -1,0 +1,22 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Rider / JetBrains
+.idea/
+
+# Test results
+*.coverage
+*.coveragexml
+TestResults/
+
+# Logs
+*.log
+
+# User-specific files
+*.userprefs

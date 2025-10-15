@@ -19,9 +19,28 @@ namespace Restaurant.Pages.Clientes
 
         public IEnumerable<Cliente> Clientes { get; set; } = new List<Cliente>();
 
-        public async Task OnGetAsync(short? id)
+        public int PageNumber { get; set; } = 1;
+        public int PageSize { get; set; } = 10;
+        public int TotalPages { get; set; }
+
+        public async Task OnGetAsync(short? id, string? searchTerm, int? page)
         {
-            Clientes = await _repo.GetAllAsync();
+            var allClientes = string.IsNullOrEmpty(searchTerm)
+                ? await _repo.GetAllAsync()
+                : await _repo.FindAsync(c =>
+                    c.Nombre.Contains(searchTerm) ||
+                    c.Apellido.Contains(searchTerm) ||
+                    c.Correo.Contains(searchTerm));
+
+            var totalCount = allClientes.Count();
+            TotalPages = (int)Math.Ceiling(totalCount / (double)PageSize);
+            PageNumber = page.HasValue && page.Value > 0 ? page.Value : 1;
+
+            Clientes = allClientes
+                .Skip((PageNumber - 1) * PageSize)
+                .Take(PageSize)
+                .ToList();
+
             if (id.HasValue)
             {
                 var cliente = await _repo.GetByIdAsync(id.Value);
@@ -29,43 +48,6 @@ namespace Restaurant.Pages.Clientes
                 {
                     Cliente = cliente;
                 }
-            }
-        }
-
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (Cliente == null)
-                return Page();
-
-            if (Cliente.Id > 0)
-            {
-                var dbCliente = await _repo.GetByIdAsync(Cliente.Id);
-                if (dbCliente != null)
-                {
-                    dbCliente.Nombre = Cliente.Nombre;
-                    dbCliente.Apellido = Cliente.Apellido;
-                    dbCliente.Telefono = Cliente.Telefono;
-                    dbCliente.Correo = Cliente.Correo;
-                    dbCliente.UltimaActualizacion = DateTime.Now;
-
-                    _repo.Update(dbCliente);
-                    await _repo.SaveChangesAsync();
-                }
-
-                return RedirectToPage();
-            }
-
-            else
-            {
-                Cliente.FechaCreacion = DateTime.Now;
-                Cliente.UltimaActualizacion = DateTime.Now;
-                Cliente.Estado = 1;
-                Cliente.CreadoPor = 1; 
-
-                await _repo.AddAsync(Cliente);
-                await _repo.SaveChangesAsync();
-
-                return RedirectToPage();
             }
         }
 

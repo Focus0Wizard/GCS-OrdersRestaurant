@@ -1,0 +1,57 @@
+@page
+@using Restaurant.Entities
+@model Restaurant.Pages.Pedidos.ListModel
+@{
+    ViewData["Title"] = "Lista de Pedidos";
+}
+
+<h2>Lista de Pedidos</h2>
+
+<a asp-page="./Index" class="btn btn-success mb-3">Crear nuevo pedido</a>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Cliente</th>
+        <th>Total</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var p in Model.Pedidos)
+    {
+        <tr>
+            <td>@p.NombreCliente @p.ApellidoCliente</td>
+            <td>@p.Total</td>
+            <td>@p.FechaCreacion?.ToString("dd/MM/yyyy HH:mm")</td>
+            <td>
+                @switch(p.EstadoPedido)
+                {
+                    case 1: <text>Enviado</text>; break;
+                    case 0: <text>Recepcionado</text>; break;
+                    case -1: <text>Cancelado</text>; break;
+                    default: <text>Creado</text>; break;
+                }
+            </td>
+            <td>
+                <form method="post" asp-page-handler="Recepcionado" style="display:inline">
+                    <input type="hidden" name="id" value="@p.Id" />
+                    <button type="submit" class="btn btn-success btn-sm">Recepcionado</button>
+                </form>
+
+                <form method="post" asp-page-handler="Enviado" style="display:inline">
+                    <input type="hidden" name="id" value="@p.Id" />
+                    <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+                </form>
+
+                <form method="post" asp-page-handler="Cancelar" style="display:inline">
+                    <input type="hidden" name="id" value="@p.Id" />
+                    <button type="submit" class="btn btn-warning btn-sm">Cancelar</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

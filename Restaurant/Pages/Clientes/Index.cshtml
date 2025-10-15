@@ -7,32 +7,13 @@
 
 <h2>Gestión de Clientes</h2>
 
-<form method="post">
-    <input type="hidden" asp-for="Cliente.Id" />
-
-    <div class="mb-2">
-        <label>Nombre</label>
-        <input asp-for="Cliente.Nombre" class="form-control" />
+<form method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="searchTerm" value="@Request.Query["searchTerm"]" class="form-control" placeholder="Buscar cliente..." />
+        <button type="submit" class="btn btn-outline-primary">Buscar</button>
+        <a asp-page="./Index" class="btn btn-outline-secondary">Limpiar</a>
+        <a asp-page="./Create" class="btn btn-success ms-2">Nuevo Cliente</a>
     </div>
-
-    <div class="mb-2">
-        <label>Apellido</label>
-        <input asp-for="Cliente.Apellido" class="form-control" />
-    </div>
-
-    <div class="mb-2">
-        <label>Teléfono</label>
-        <input asp-for="Cliente.Telefono" class="form-control" />
-    </div>
-
-    <div class="mb-2">
-        <label>Correo</label>
-        <input asp-for="Cliente.Correo" class="form-control" />
-    </div>
-
-    <button type="submit" class="btn btn-primary mt-2">
-        @(Model.Cliente.Id > 0 ? "Actualizar" : "Guardar")
-    </button>
 </form>
 
 <hr />
@@ -41,31 +22,44 @@
 
 <table class="table table-striped">
     <thead>
-    <tr>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Teléfono</th>
-        <th>Correo</th>
-        <th>Acciones</th>
-    </tr>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Teléfono</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+        </tr>
     </thead>
     <tbody>
-    @foreach (var c in Model.Clientes)
-    {
-        <tr>
-            <td>@c.Nombre</td>
-            <td>@c.Apellido</td>
-            <td>@c.Telefono</td>
-            <td>@c.Correo</td>
-            <td>
-                <a asp-page="./Index" asp-route-id="@c.Id" class="btn btn-warning btn-sm">Editar</a>
-
-                <form method="post" asp-page-handler="Eliminar" style="display:inline">
-                    <input type="hidden" name="id" value="@c.Id"/>
-                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                </form>
-            </td>
-        </tr>
-    }
+        @foreach (var c in Model.Clientes)
+        {
+            <tr>
+                <td>@c.Nombre</td>
+                <td>@c.Apellido</td>
+                <td>@c.Telefono</td>
+                <td>@c.Correo</td>
+                <td>
+                    <a asp-page="./Index" asp-route-id="@c.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <form method="post" asp-page-handler="Eliminar" style="display:inline">
+                        <input type="hidden" name="id" value="@c.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@if (Model.TotalPages > 1)
+{
+    <nav aria-label="Paginación">
+        <ul class="pagination">
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                    <a class="page-link" href="?page=@i&searchTerm=@Request.Query["searchTerm"]">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}

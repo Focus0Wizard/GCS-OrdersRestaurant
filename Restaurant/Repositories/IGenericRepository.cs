@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace Restaurant.Repositories
 {
@@ -11,5 +13,6 @@ namespace Restaurant.Repositories
         void Update(T entity);
         void Delete(T entity);
         Task SaveChangesAsync();
+        Task<IEnumerable<T>> FindAsync(System.Linq.Expressions.Expression<Func<T, bool>> predicate);
     }
 }
