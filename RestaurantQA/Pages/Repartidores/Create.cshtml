@@ -1,0 +1,42 @@
+@page "{id?}"
+@model Restaurant.Pages.Repartidores.CreateModel
+@{
+    var esEdicion = Model.Repartidor?.Id > 0;
+    ViewData["Title"] = esEdicion ? "Editar Repartidor" : "Registrar Repartidor";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Repartidor.Id" />
+
+    <div class="mb-2">
+        <label>Nombre</label>
+        <input asp-for="Repartidor.Nombre" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Apellido</label>
+        <input asp-for="Repartidor.Apellido" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Teléfono</label>
+        <input asp-for="Repartidor.Telefono" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Tipo de Repartidor</label>
+        <select asp-for="Repartidor.Tipo" class="form-select">
+            <option value="">Seleccione un estado</option>
+            <option value="Bicicleta">Bicicleta</option>
+            <option value="Moto">Moto</option>
+            <option value="Auto">Auto</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">
+        @(esEdicion ? "Actualizar" : "Guardar")
+    </button>
+    <a asp-page="./Index" class="btn btn-secondary mt-2">Volver</a>
+</form>

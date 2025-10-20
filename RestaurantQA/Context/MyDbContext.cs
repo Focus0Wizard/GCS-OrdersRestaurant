@@ -305,6 +305,9 @@ public partial class MyDbContext : DbContext
             entity.Property(e => e.EstadoEntrega)
                 .HasMaxLength(30)
                 .HasColumnName("estado_entrega");
+            entity.Property(e => e.Tipo)
+                .HasMaxLength(30)
+                .HasColumnName("tipo");
             entity.Property(e => e.FechaCreacion)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("timestamp")

@@ -15,6 +15,8 @@ public partial class Repartidore
 
     public string? EstadoEntrega { get; set; }
 
+    public string? Tipo { get; set; }
+
     public DateTime? FechaCreacion { get; set; }
 
     public DateTime? UltimaActualizacion { get; set; }
