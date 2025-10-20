@@ -7,7 +7,7 @@ public partial class DetallePedido
 {
     public short PedidoId { get; set; }
 
-    public short ProductoId { get; set; }
+    public short? ProductoId { get; set; }
 
     public int Cantidad { get; set; }
 
@@ -17,5 +17,5 @@ public partial class DetallePedido
 
     public virtual Pedido Pedido { get; set; } = null!;
 
-    public virtual Producto Producto { get; set; } = null!;
+    public virtual Producto? Producto { get; set; } = null!;
 }

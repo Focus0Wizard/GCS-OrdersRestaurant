@@ -1,12 +1,15 @@
-@page
+@page "{id?}"
 @model Restaurant.Pages.Clientes.CreateModel
 @{
-    ViewData["Title"] = "Registrar Cliente";
+    var esEdicion = Model.Cliente?.Id > 0;
+    ViewData["Title"] = esEdicion ? "Editar Cliente" : "Registrar Cliente";
 }
 
-<h2>Registrar Cliente</h2>
+<h2>@ViewData["Title"]</h2>
 
 <form method="post">
+    <input type="hidden" asp-for="Cliente.Id" />
+
     <div class="mb-2">
         <label>Nombre</label>
         <input asp-for="Cliente.Nombre" class="form-control" />
@@ -27,6 +30,8 @@
         <input asp-for="Cliente.Correo" class="form-control" />
     </div>
 
-    <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+    <button type="submit" class="btn btn-primary mt-2">
+        @(esEdicion ? "Actualizar" : "Guardar")
+    </button>
     <a asp-page="./Index" class="btn btn-secondary mt-2">Volver</a>
 </form>

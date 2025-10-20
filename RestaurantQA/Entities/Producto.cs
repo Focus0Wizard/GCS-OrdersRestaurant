@@ -12,7 +12,7 @@ public partial class Producto
     public decimal Precio { get; set; }
 
     public int? Stock { get; set; }
-
+    public string Descripcion { get; set; }
     public short CategoriaId { get; set; }
 
     public DateTime? FechaCreacion { get; set; }
@@ -23,7 +23,7 @@ public partial class Producto
 
     public short? CreadoPor { get; set; }
 
-    public virtual Categoria Categoria { get; set; } = null!;
+    public virtual Categoria? Categoria { get; set; }
 
     public virtual Usuario? CreadoPorNavigation { get; set; }
 

@@ -14,6 +14,9 @@ namespace Restaurant.Pages.Clientes
             _repo = repo;
         }
 
+        [BindProperty(SupportsGet = true)]
+        public string? SearchTerm { get; set; }
+
         [BindProperty]
         public Cliente Cliente { get; set; } = new();
 
@@ -23,32 +26,24 @@ namespace Restaurant.Pages.Clientes
         public int PageSize { get; set; } = 10;
         public int TotalPages { get; set; }
 
-        public async Task OnGetAsync(short? id, string? searchTerm, int? page)
+        public async Task OnGetAsync(int page = 1)
         {
-            var allClientes = string.IsNullOrEmpty(searchTerm)
-                ? await _repo.GetAllAsync()
-                : await _repo.FindAsync(c =>
-                    c.Nombre.Contains(searchTerm) ||
-                    c.Apellido.Contains(searchTerm) ||
-                    c.Correo.Contains(searchTerm));
+            PageNumber = page;
+            var allClientes = string.IsNullOrEmpty(SearchTerm)
+                ? (await _repo.GetAllAsync()).Where(c => c.Estado == 1)
+                : (await _repo.FindAsync(c =>
+                    (c.Nombre.Contains(SearchTerm!) ||
+                     c.Apellido.Contains(SearchTerm!) ||
+                     c.Correo.Contains(SearchTerm!)) &&
+                     c.Estado == 1));
 
             var totalCount = allClientes.Count();
             TotalPages = (int)Math.Ceiling(totalCount / (double)PageSize);
-            PageNumber = page.HasValue && page.Value > 0 ? page.Value : 1;
 
             Clientes = allClientes
                 .Skip((PageNumber - 1) * PageSize)
                 .Take(PageSize)
                 .ToList();
-
-            if (id.HasValue)
-            {
-                var cliente = await _repo.GetByIdAsync(id.Value);
-                if (cliente != null)
-                {
-                    Cliente = cliente;
-                }
-            }
         }
 
         public async Task<IActionResult> OnPostEliminarAsync(short id)
@@ -56,10 +51,8 @@ namespace Restaurant.Pages.Clientes
             var entity = await _repo.GetByIdAsync(id);
             if (entity != null)
             {
-                _repo.Delete(entity);
-                await _repo.SaveChangesAsync();
+                await _repo.SoftDeleteAsync(entity);
             }
-
             return RedirectToPage();
         }
     }

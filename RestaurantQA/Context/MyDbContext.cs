@@ -281,6 +281,9 @@ public partial class MyDbContext : DbContext
             entity.HasOne(d => d.CreadoPorNavigation).WithMany(p => p.Productos)
                 .HasForeignKey(d => d.CreadoPor)
                 .HasConstraintName("fk_productos_creador");
+            entity.Property(e => e.Descripcion)
+                .HasMaxLength(200)
+                .HasColumnName("descripcion");
         });
 
         modelBuilder.Entity<Repartidore>(entity =>

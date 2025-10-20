@@ -9,7 +9,7 @@
 
 <form method="get" class="mb-3">
     <div class="input-group">
-        <input type="text" name="searchTerm" value="@Request.Query["searchTerm"]" class="form-control" placeholder="Buscar cliente..." />
+        <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control" placeholder="Buscar cliente..." />
         <button type="submit" class="btn btn-outline-primary">Buscar</button>
         <a asp-page="./Index" class="btn btn-outline-secondary">Limpiar</a>
         <a asp-page="./Create" class="btn btn-success ms-2">Nuevo Cliente</a>
@@ -39,9 +39,8 @@
                 <td>@c.Telefono</td>
                 <td>@c.Correo</td>
                 <td>
-                    <a asp-page="./Index" asp-route-id="@c.Id" class="btn btn-warning btn-sm">Editar</a>
-                    <form method="post" asp-page-handler="Eliminar" style="display:inline">
-                        <input type="hidden" name="id" value="@c.Id" />
+                    <a asp-page="./Create" asp-route-id="@c.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <form method="post" asp-page-handler="Eliminar" asp-route-id="@c.Id" style="display:inline-block;">
                         <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                     </form>
                 </td>
@@ -57,7 +56,7 @@
             @for (int i = 1; i <= Model.TotalPages; i++)
             {
                 <li class="page-item @(i == Model.PageNumber ? "active" : "")">
-                    <a class="page-link" href="?page=@i&searchTerm=@Request.Query["searchTerm"]">@i</a>
+                    <a class="page-link" asp-page="./Index" asp-route-page="@i" asp-route-searchTerm="@Model.SearchTerm">@i</a>
                 </li>
             }
         </ul>

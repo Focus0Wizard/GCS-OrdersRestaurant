@@ -14,5 +14,6 @@ namespace Restaurant.Repositories
         void Delete(T entity);
         Task SaveChangesAsync();
         Task<IEnumerable<T>> FindAsync(System.Linq.Expressions.Expression<Func<T, bool>> predicate);
+        Task SoftDeleteAsync(T entity);
     }
 }

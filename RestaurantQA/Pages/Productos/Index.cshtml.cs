@@ -23,12 +23,12 @@ namespace Restaurant.Pages.Productos
 
         public IEnumerable<Producto> Productos { get; set; } = new List<Producto>();
 
-        // GET: Listar productos y cargar producto a editar si viene id
         public async Task OnGetAsync(short? id, string? searchTerm)
         {
             var productos = await _repo.GetAllAsync();
 
-            // 🔍 Si hay texto de búsqueda, filtra
+            productos = productos.Where(p => p.Estado == 1);
+
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.ToLower();
@@ -38,8 +38,6 @@ namespace Restaurant.Pages.Productos
             }
 
             Productos = productos;
-
-            // Si viene un id (editar)
             if (id.HasValue)
             {
                 var producto = await _repo.GetByIdAsync(id.Value);
@@ -50,18 +48,28 @@ namespace Restaurant.Pages.Productos
             }
         }
 
-        // POST: Crear o actualizar producto
+
+
         public async Task<IActionResult> OnPostAsync()
         {
-            if (Producto == null)
+            if (!ModelState.IsValid || Producto == null)
                 return Page();
 
             if (Producto.Id > 0)
             {
-                Producto.UltimaActualizacion = DateTime.Now;
-                _repo.Update(Producto);
+                var productoExistente = await _repo.GetByIdAsync(Producto.Id);
+                if (productoExistente == null)
+                    return NotFound();
+
+                productoExistente.Nombre = Producto.Nombre;
+                productoExistente.Precio = Producto.Precio;
+                productoExistente.Stock = Producto.Stock;
+                productoExistente.Descripcion = Producto.Descripcion;
+                productoExistente.CategoriaId = Producto.CategoriaId;
+
+                productoExistente.UltimaActualizacion = DateTime.Now;
+
                 await _repo.SaveChangesAsync();
-                return RedirectToPage();
             }
             else
             {
@@ -69,22 +77,22 @@ namespace Restaurant.Pages.Productos
                 Producto.FechaCreacion = DateTime.Now;
                 Producto.UltimaActualizacion = DateTime.Now;
                 Producto.Estado = 1;
+
                 await _repo.AddAsync(Producto);
                 await _repo.SaveChangesAsync();
-                return RedirectToPage();
             }
+
+            return RedirectToPage();
         }
 
-        // POST: Eliminar producto
+
         public async Task<IActionResult> OnPostEliminarAsync(short id)
         {
             var entity = await _repo.GetByIdAsync(id);
             if (entity != null)
             {
-                _repo.Delete(entity);
-                await _repo.SaveChangesAsync();
+                await _repo.SoftDeleteAsync(entity);
             }
-
             return RedirectToPage();
         }
     }

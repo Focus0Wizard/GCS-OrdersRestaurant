@@ -31,7 +31,7 @@ public partial class Pedido
 
     public virtual Usuario? CreadoPorNavigation { get; set; }
 
-    public virtual ICollection<DetallePedido> DetallePedidos { get; set; } = new List<DetallePedido>();
+    public virtual ICollection<DetallePedido>? DetallePedidos { get; set; } = new List<DetallePedido>();
 
     public virtual ICollection<Pago> Pagos { get; set; } = new List<Pago>();
 

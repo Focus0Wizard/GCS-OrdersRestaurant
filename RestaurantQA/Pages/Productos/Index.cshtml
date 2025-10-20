@@ -26,6 +26,11 @@
     </div>
     
     <div class="mb-2">
+        <label>Descripcion</label>
+        <input asp-for="Producto.Descripcion" class="form-control" />
+    </div>
+    
+    <div class="mb-2">
         <label>Categoría ID</label>
         <input asp-for="Producto.CategoriaId" class="form-control" />
     </div>
@@ -55,6 +60,7 @@
         <th>Precio</th>
         <th>Stock</th>
         <th>Categoría</th>
+        <th>Descripcion</th>
         <th>Acciones</th>
     </tr>
     </thead>
@@ -66,11 +72,11 @@
             <td>@p.Precio</td>
             <td>@p.Stock</td>
             <td>@p.CategoriaId</td>
+            <td>@p.Descripcion</td>
             <td>
                 <a asp-page="./Index" asp-route-id="@p.Id" class="btn btn-warning btn-sm">Editar</a>
 
-                <form method="post" asp-page-handler="Eliminar" style="display:inline">
-                    <input type="hidden" name="id" value="@p.Id" />
+                <form method="post" asp-page-handler="Eliminar" asp-route-id="@p.Id" style="display:inline">
                     <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                 </form>
             </td>
