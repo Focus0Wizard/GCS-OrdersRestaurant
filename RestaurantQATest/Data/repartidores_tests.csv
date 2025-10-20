@@ -1,0 +1,37 @@
+caso,nombre,apellido,telefono,tipo,esperado,particion,observaciones
+RP1,Carlos,Gómez,71234567,Interno,Aceptado,Válida - Datos correctos con valores normales,Todos los campos válidos: nombre corto válido + apellido válido + teléfono 8 dígitos + tipo válido
+RP2,Carlos,López,78901234,Externo,Aceptado,Válida - Datos correctos con teléfono iniciando en 7,Todos los campos válidos: nombre corto + apellido corto + teléfono válido + tipo externo
+RP3,Carlos,A,,,Rechazado,Inválida - Apellido muy corto y teléfono vacío,Apellido < 3 caracteres (solo 1) + teléfono vacío
+RP4,Carlos,Rodríguez,71234,Interno,Rechazado,Inválida - Teléfono muy corto,Teléfono solo 5 dígitos (mínimo 7)
+RP5,Carlos,ApellidoDeCincuentaCaracteresExactamenteABCDEABCDEABCDEABCDEABCDE,7123456789,Externo,Rechazado,Inválida - Apellido excede máximo y teléfono excede máximo,Apellido > 30 caracteres + teléfono 10 dígitos (máximo 8)
+RP6,Carlos,,71A3456B,Temporal,Rechazado,Inválida - Apellido vacío y teléfono con letras,Apellido obligatorio vacío + teléfono contiene letras
+RP7,Juan Pérez,López,,Interno,Rechazado,Inválida - Teléfono vacío,Teléfono es opcional pero si se envía vacío puede causar error según implementación
+RP8,Juan Pérez,A,71234,Externo,Rechazado,Inválida - Apellido muy corto y teléfono corto,Apellido < 3 + teléfono solo 5 dígitos
+RP9,Juan Pérez,Rodríguez,7123456789,Temporal,Rechazado,Inválida - Teléfono excede máximo,Teléfono 10 dígitos (máximo 8)
+RP10,Juan Pérez,ApellidoDeCincuentaCaracteresExactamenteABCDEABCDEABCDEABCDEABCDE,71A3456B,Interno,Rechazado,Inválida - Apellido excede y teléfono con letras,Apellido > 30 + teléfono contiene letras
+RP11,Juan Pérez,,71234567,Externo,Rechazado,Inválida - Apellido vacío,Apellido es campo obligatorio
+RP12,Juan Pérez,Gómez,78901234,Temporal,Aceptado,Válida - Nombre compuesto válido,Nombre con espacio válido + todos los campos correctos
+RP13,A,A,7123456789,Interno,Rechazado,Inválida - Nombre y apellido muy cortos y teléfono largo,Nombre < 3 + apellido < 3 + teléfono 10 dígitos
+RP14,A,Rodríguez,71A3456B,Externo,Rechazado,Inválida - Nombre muy corto y teléfono con letras,Nombre solo 1 carácter + teléfono inválido
+RP15,A,ApellidoDeCincuentaCaracteresExactamenteABCDEABCDEABCDEABCDEABCDE,71234567,Temporal,Rechazado,Inválida - Nombre muy corto y apellido excede,Nombre < 3 + apellido > 30
+RP16,A,,78901234,Interno,Rechazado,Inválida - Nombre muy corto y apellido vacío,Nombre < 3 + apellido obligatorio vacío
+RP17,A,Gómez,,Externo,Rechazado,Inválida - Nombre muy corto y teléfono vacío,Nombre solo 1 carácter (mínimo 3)
+RP18,A,López,71234,Temporal,Rechazado,Inválida - Nombre muy corto y teléfono corto,Nombre < 3 + teléfono solo 5 dígitos
+RP19,María Fernanda,Rodríguez,71234567,Interno,Aceptado,Válida - Nombre compuesto largo válido,Nombre con espacio válido (María Fernanda) + todos correctos
+RP20,María Fernanda,ApellidoDeCincuentaCaracteresExactamenteABCDEABCDEABCDEABCDEABCDE,78901234,Externo,Rechazado,Inválida - Apellido excede máximo,Apellido > 30 caracteres
+RP21,María Fernanda,,,Temporal,Rechazado,Inválida - Apellido y teléfono vacíos,Apellido obligatorio vacío + teléfono vacío
+RP22,María Fernanda,Gómez,71234,Interno,Rechazado,Inválida - Teléfono muy corto,Teléfono solo 5 dígitos
+RP23,María Fernanda,López,7123456789,Externo,Rechazado,Inválida - Teléfono excede máximo,Teléfono 10 dígitos (máximo 8)
+RP24,María Fernanda,A,71A3456B,Temporal,Rechazado,Inválida - Apellido muy corto y teléfono con letras,Apellido < 3 + teléfono inválido
+RP25,NombreExtremadamenteLargoDeCincuentaCaracteresABCDE,ApellidoDeCincuentaCaracteresExactamenteABCDEABCDEABCDEABCDEABCDE,71234567,Interno,Rechazado,Inválida - Nombre y apellido exceden máximos,Nombre > 30 + apellido > 30
+RP26,NombreExtremadamenteLargoDeCincuentaCaracteresABCDE,,78901234,Externo,Rechazado,Inválida - Nombre excede y apellido vacío,Nombre > 30 + apellido obligatorio vacío
+RP27,NombreExtremadamenteLargoDeCincuentaCaracteresABCDE,Gómez,,Temporal,Rechazado,Inválida - Nombre excede máximo,Nombre > 30 caracteres
+RP28,NombreExtremadamenteLargoDeCincuentaCaracteresABCDE,López,71234,Interno,Rechazado,Inválida - Nombre excede y teléfono corto,Nombre > 30 + teléfono solo 5 dígitos
+RP29,NombreExtremadamenteLargoDeCincuentaCaracteresABCDE,A,7123456789,Externo,Rechazado,Inválida - Nombre excede + apellido corto + teléfono largo,Múltiples errores: nombre > 30 + apellido < 3 + teléfono 10 dígitos
+RP30,NombreExtremadamenteLargoDeCincuentaCaracteresABCDE,Rodríguez,71A3456B,Temporal,Rechazado,Inválida - Nombre excede y teléfono con letras,Nombre > 30 + teléfono inválido
+RP31,,,7123456789,Interno,Rechazado,Inválida - Nombre y apellido vacíos + teléfono largo,Nombre vacío + apellido vacío + teléfono 10 dígitos
+RP32,,Gómez,71A3456B,Externo,Rechazado,Inválida - Nombre vacío y teléfono con letras,Nombre obligatorio vacío + teléfono inválido
+RP33,,López,71234567,Temporal,Rechazado,Inválida - Solo nombre vacío,Nombre es campo obligatorio
+RP34,,A,78901234,Interno,Rechazado,Inválida - Nombre vacío y apellido muy corto,Nombre vacío + apellido < 3
+RP35,,Rodríguez,,Externo,Rechazado,Inválida - Nombre y teléfono vacíos,Nombre obligatorio vacío
+RP36,,ApellidoDeCincuentaCaracteresExactamenteABCDEABCDEABCDEABCDEABCDE,71234,Temporal,Rechazado,Inválida - Nombre vacío + apellido excede + teléfono corto,Múltiples errores: nombre vacío + apellido > 30 + teléfono 5 dígitos

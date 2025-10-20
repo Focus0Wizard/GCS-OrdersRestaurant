@@ -73,6 +73,9 @@ def pytest_configure(config):
         "markers", "clientes: marca tests relacionados con el módulo de clientes"
     )
     config.addinivalue_line(
+        "markers", "repartidores: marca tests relacionados con el módulo de repartidores"
+    )
+    config.addinivalue_line(
         "markers", "smoke: marca tests de smoke testing"
     )
     config.addinivalue_line(
