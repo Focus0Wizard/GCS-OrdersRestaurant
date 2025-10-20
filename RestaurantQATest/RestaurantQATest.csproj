@@ -34,4 +34,8 @@
       <ProjectReference Include="..\RestaurantQA\RestaurantQA.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Data\" />
+    </ItemGroup>
+
 </Project>

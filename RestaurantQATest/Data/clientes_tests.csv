@@ -1,0 +1,37 @@
+caso,nombre,apellido,telefono,correo,esperado
+CL1,Carlos,Pérez,71234567,carlos@gmail.com,Aceptado
+CL2,Carlos,De la Cruz,61234567,usuario@ucb.edu.bo,Aceptado
+CL3,Carlos,,,,Rechazado
+CL4,Carlos,FernandezMartinezGonzalezRodriguezPerezLópez,712345,carlosgmail.com,Rechazado
+CL5,Carlos,Gomez123,712345678901234,usuario@,Rechazado
+CL6,Carlos,López#,71A23B67,maria@@gmail..com,Rechazado
+CL7,María José,De la Cruz,,carlosgmail.com,Rechazado
+CL8,María José,,712345,usuario@,Rechazado
+CL9,María José,FernandezMartinezGonzalezRodriguezPerezLópez,712345678901234,maria@@gmail..com,Rechazado
+CL10,María José,Gomez123,71A23B67,carlos@gmail.com,Rechazado
+CL11,María José,López#,71234567,usuario@ucb.edu.bo,Rechazado
+CL12,María José,Pérez,59171234567,,Rechazado
+CL13,,,712345678901234,carlos@gmail.com,Rechazado
+CL14,,FernandezMartinezGonzalezRodriguezPerezLópez,71A23B67,usuario@ucb.edu.bo,Rechazado
+CL15,,Gomez123,71234567,,Rechazado
+CL16,,López#,59171234567,carlosgmail.com,Rechazado
+CL17,,Pérez,,usuario@,Rechazado
+CL18,,De la Cruz,712345,maria@@gmail..com,Rechazado
+CL19,AlejandroFernandezGonzalezMartinezPerezLopez,FernandezMartinezGonzalezRodriguezPerezLópez,71234567,carlosgmail.com,Rechazado
+CL20,AlejandroFernandezGonzalezMartinezPerezLopez,Gomez123,59171234567,usuario@,Rechazado
+CL21,AlejandroFernandezGonzalezMartinezPerezLopez,López#,,maria@@gmail..com,Rechazado
+CL22,AlejandroFernandezGonzalezMartinezPerezLopez,Pérez,712345,carlos@gmail.com,Rechazado
+CL23,AlejandroFernandezGonzalezMartinezPerezLopez,De la Cruz,712345678901234,usuario@ucb.edu.bo,Rechazado
+CL24,AlejandroFernandezGonzalezMartinezPerezLopez,,71A23B67,,Rechazado
+CL25,Juan123,Gomez123,,carlos@gmail.com,Rechazado
+CL26,Juan123,López#,712345,usuario@ucb.edu.bo,Rechazado
+CL27,Juan123,Pérez,712345678901234,,Rechazado
+CL28,Juan123,De la Cruz,71A23B67,carlosgmail.com,Rechazado
+CL29,Juan123,,71234567,usuario@,Rechazado
+CL30,Juan123,FernandezMartinezGonzalezRodriguezPerezLópez,59171234567,maria@@gmail..com,Rechazado
+CL31,@Pedro!,López#,712345678901234,carlosgmail.com,Rechazado
+CL32,@Pedro!,Pérez,71A23B67,usuario@,Rechazado
+CL33,@Pedro!,De la Cruz,71234567,maria@@gmail..com,Rechazado
+CL34,@Pedro!,,59171234567,carlos@gmail.com,Rechazado
+CL35,@Pedro!,FernandezMartinezGonzalezRodriguezPerezLópez,,usuario@ucb.edu.bo,Rechazado
+CL36,@Pedro!,Gomez123,712345,,Rechazado
