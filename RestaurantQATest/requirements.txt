@@ -1,0 +1,23 @@
+# ============================================
+# Dependencias para Pruebas Automatizadas
+# Proyecto: RestaurantQA
+# Módulo: Automatización con Selenium + Pytest
+# ============================================
+
+# Framework de pruebas
+pytest==8.1.1
+pytest-html==4.1.1
+pytest-xdist==3.5.0
+
+# Selenium WebDriver
+selenium==4.18.1
+webdriver-manager==4.0.1
+
+# Utilidades
+csv342==1.0.0
+
+# Reportes y logs
+allure-pytest==2.13.2
+
+# Validación de datos
+pytest-timeout==2.2.0

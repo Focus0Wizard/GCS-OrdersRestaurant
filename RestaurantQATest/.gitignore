@@ -1,0 +1,59 @@
+# ============================================
+# .gitignore para RestaurantQATest
+# ============================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+.venv
+
+# Pytest
+.pytest_cache/
+.cache/
+*.coverage
+.coverage.*
+htmlcov/
+
+# Reportes generados
+reports/*.html
+reports/*.xml
+reports/*.log
+reports/*.json
+!reports/.gitkeep
+
+# Allure
+allure-results/
+allure-report/
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Selenium
+geckodriver.log
+chromedriver.log
+
+# Temporal
+*.tmp
+*.bak
+temp/

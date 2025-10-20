@@ -1,0 +1,34 @@
+caso,nombre,precio,stock,descripcion,categoria_id,esperado,particion,observaciones
+PR1,Hamburguesa,0.01,0,Rico,1,Aceptado,Válida - Valores mínimos permitidos,Precio mínimo (0.01) y stock mínimo (0) con descripción corta válida
+PR2,Hamburguesa,1000,150,Producto gourmet elaborado artesanalmente con ingredientes de alta calidad seleccionados cuidadosamente.,1,Aceptado,Válida - Valores máximos permitidos,Precio máximo (1000) y stock máximo (150) con descripción larga válida
+PR3,Hamburguesa,0,-5,Pan,1,Rechazado,Inválida - Precio en límite inferior,Precio = 0 (debe ser >= 0.01) y stock negativo
+PR4,Hamburguesa,1500,200,Deliciosa hamburguesa con queso y tomate fresco.,1,Rechazado,Inválida - Precio y stock exceden máximos,Precio > 1000 y stock > 150
+PR5,Hamburguesa,25.5,50,Rico,1,Aceptado,Válida - Valores intermedios,Todos los campos con valores válidos dentro del rango
+PR6,Pan,0.01,150,Pan,1,Rechazado,Inválida - Descripción muy corta,Descripción tiene solo 3 caracteres (mínimo 5)
+PR7,Pan,1000,-5,Deliciosa hamburguesa con queso y tomate fresco.,1,Rechazado,Inválida - Stock negativo,Stock no puede ser negativo
+PR8,Pan,0,200,Rico,1,Rechazado,Inválida - Precio = 0 y stock excede máximo,Precio debe ser >= 0.01 y stock > 150
+PR9,Pan,1500,50,Deliciosa hamburguesa con queso y tomate fresco.,1,Rechazado,Inválida - Precio excede máximo,Precio > 1000
+PR10,Pan,25.5,0,Producto gourmet elaborado artesanalmente con ingredientes de alta calidad seleccionados cuidadosamente.,1,Rechazado,Inválida - Descripción excede máximo,Descripción > 100 caracteres
+PR11,,1000,200,Deliciosa hamburguesa con queso y tomate fresco.,1,Rechazado,Inválida - Nombre vacío y stock excede máximo,Nombre es obligatorio
+PR12,,0,50,Rico,1,Rechazado,Inválida - Nombre vacío y precio = 0,Nombre es obligatorio y precio debe ser >= 0.01
+PR13,,1500,50,Producto gourmet elaborado artesanalmente con ingredientes de alta calidad seleccionados cuidadosamente.,1,Rechazado,Inválida - Nombre vacío y múltiples errores,Nombre vacío + precio > 1000 + descripción > 100
+PR14,,25.5,0,Pan,1,Rechazado,Inválida - Nombre vacío y descripción corta,Nombre vacío + descripción < 5 caracteres
+PR15,,25.5,150,Deliciosa hamburguesa con queso y tomate fresco.,1,Rechazado,Inválida - Solo nombre vacío,Nombre es campo obligatorio
+PR16,,0.01,-5,Rico,1,Rechazado,Inválida - Nombre vacío y stock negativo,Nombre vacío + stock < 0
+PR17,SuperMegaComboDobleQuesoExtraGrande,0,50,Pan,1,Rechazado,Inválida - Nombre excede máximo y múltiples errores,Nombre > 20 caracteres + precio = 0 + descripción < 5
+PR18,SuperMegaComboDobleQuesoExtraGrande,1500,0,Deliciosa hamburguesa con queso y tomate fresco.,1,Rechazado,Inválida - Nombre y precio exceden máximos,Nombre > 20 + precio > 1000
+PR19,SuperMegaComboDobleQuesoExtraGrande,25.5,150,Rico,1,Rechazado,Inválida - Nombre excede máximo y descripción corta,Nombre > 20 + descripción < 5
+PR20,SuperMegaComboDobleQuesoExtraGrande,25.5,-5,Deliciosa hamburguesa con queso y tomate fresco.,1,Rechazado,Inválida - Nombre excede máximo y stock negativo,Nombre > 20 + stock < 0
+PR21,SuperMegaComboDobleQuesoExtraGrande,0.01,200,Rico,1,Rechazado,Inválida - Nombre excede y múltiples errores,Nombre > 20 + stock > 150 + descripción < 5
+PR22,SuperMegaComboDobleQuesoExtraGrande,1000,50,Producto gourmet elaborado artesanalmente con ingredientes de alta calidad seleccionados cuidadosamente.,1,Rechazado,Inválida - Nombre y descripción exceden máximos,Nombre > 20 + descripción > 100
+PR23,Pizza@123,1500,150,Deliciosa hamburguesa con queso y tomate fresco.,1,Rechazado,Inválida - Nombre con caracteres especiales y precio excede,Nombre contiene @ y números + precio > 1000
+PR24,Pizza@123,25.5,-5,Rico,1,Rechazado,Inválida - Nombre con caracteres especiales y stock negativo,Nombre inválido + stock < 0 + descripción < 5
+PR25,Pizza@123,25.5,200,Producto gourmet elaborado artesanalmente con ingredientes de alta calidad seleccionados cuidadosamente.,1,Rechazado,Inválida - Nombre inválido y múltiples errores,Nombre con @ + stock > 150 + descripción > 100
+PR26,Pizza@123,0.01,50,Pan,1,Rechazado,Inválida - Nombre con caracteres especiales y descripción corta,Nombre inválido + descripción < 5
+PR27,Pizza@123,1000,50,Deliciosa hamburguesa con queso y tomate fresco.,1,Rechazado,Inválida - Solo nombre con caracteres especiales,Validación de formato de nombre
+PR28,Pizza@123,0,0,Rico,1,Rechazado,Inválida - Nombre inválido y múltiples errores,Nombre con @ + precio = 0 + descripción < 5
+PR29,,25.5,200,Pan,1,Rechazado,Inválida - Nombre vacío y múltiples errores,Nombre vacío + stock > 150 + descripción < 5
+PR30,,0.01,50,Rico,1,Rechazado,Inválida - Nombre vacío y descripción corta,Nombre vacío + descripción < 5
+PR31,,1000,0,Deliciosa hamburguesa con queso y tomate fresco.,1,Rechazado,Inválida - Solo nombre vacío,Nombre es obligatorio
+PR32,,0,150,Rico,1,Rechazado,Inválida - Nombre vacío y múltiples errores,Nombre vacío + precio = 0 + descripción < 5
+PR33,,1500,-5,Producto gourmet elaborado artesanalmente con ingredientes de alta calidad seleccionados cuidadosamente.,1,Rechazado,Inválida - Nombre vacío y múltiples errores,Nombre vacío + precio > 1000 + stock < 0 + descripción > 100
