@@ -13,21 +13,25 @@
     <div class="mb-2">
         <label>Nombre</label>
         <input asp-for="Producto.Nombre" class="form-control" />
+        <span asp-validation-for="Producto.Nombre" class="text-danger"></span>
     </div>
     
     <div class="mb-2">
         <label>Precio</label>
         <input asp-for="Producto.Precio" step="0.01" class="form-control" />
+        <span asp-validation-for="Producto.Precio" class="text-danger"></span>
     </div>
     
     <div class="mb-2">
         <label>Stock</label>
         <input asp-for="Producto.Stock" class="form-control" />
+        <span asp-validation-for="Producto.Stock" class="text-danger"></span>
     </div>
     
     <div class="mb-2">
         <label>Descripcion</label>
         <input asp-for="Producto.Descripcion" class="form-control" />
+        <span asp-validation-for="Producto.Descripcion" class="text-danger"></span>
     </div>
     
     <div class="mb-2">
@@ -43,8 +47,6 @@
 <hr />
 
 <h4>Lista de productos</h4>
-
-<!-- 🔍 Buscador -->
 <form method="get" class="mb-3">
     <div class="input-group">
         <input type="text" name="searchTerm" value="@Request.Query["searchTerm"]" class="form-control" placeholder="Buscar producto..." />
@@ -84,3 +86,8 @@
     }
     </tbody>
 </table>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

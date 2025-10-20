@@ -13,16 +13,19 @@
     <div class="mb-2">
         <label>Nombre</label>
         <input asp-for="Repartidor.Nombre" class="form-control" />
+        <span asp-validation-for="Repartidor.Nombre" class="text-danger"></span>
     </div>
 
     <div class="mb-2">
         <label>Apellido</label>
         <input asp-for="Repartidor.Apellido" class="form-control" />
+        <span asp-validation-for="Repartidor.Apellido" class="text-danger"></span>
     </div>
 
     <div class="mb-2">
         <label>Teléfono</label>
         <input asp-for="Repartidor.Telefono" class="form-control" />
+        <span asp-validation-for="Repartidor.Telefono" class="text-danger"></span>
     </div>
 
     <div class="mb-2">
@@ -40,3 +43,7 @@
     </button>
     <a asp-page="./Index" class="btn btn-secondary mt-2">Volver</a>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
