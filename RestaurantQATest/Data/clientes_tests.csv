@@ -1,37 +1,74 @@
-caso,nombre,apellido,telefono,correo,esperado
-CL1,Carlos,Pérez,71234567,carlos@gmail.com,Aceptado
-CL2,Carlos,De la Cruz,61234567,usuario@ucb.edu.bo,Aceptado
-CL3,Carlos,,,,Rechazado
-CL4,Carlos,FernandezMartinezGonzalezRodriguezPerezLópez,712345,carlosgmail.com,Rechazado
-CL5,Carlos,Gomez123,712345678901234,usuario@,Rechazado
-CL6,Carlos,López#,71A23B67,maria@@gmail..com,Rechazado
-CL7,María José,De la Cruz,,carlosgmail.com,Rechazado
-CL8,María José,,712345,usuario@,Rechazado
-CL9,María José,FernandezMartinezGonzalezRodriguezPerezLópez,712345678901234,maria@@gmail..com,Rechazado
-CL10,María José,Gomez123,71A23B67,carlos@gmail.com,Rechazado
-CL11,María José,López#,71234567,usuario@ucb.edu.bo,Rechazado
-CL12,María José,Pérez,59171234567,,Rechazado
-CL13,,,712345678901234,carlos@gmail.com,Rechazado
-CL14,,FernandezMartinezGonzalezRodriguezPerezLópez,71A23B67,usuario@ucb.edu.bo,Rechazado
-CL15,,Gomez123,71234567,,Rechazado
-CL16,,López#,59171234567,carlosgmail.com,Rechazado
-CL17,,Pérez,,usuario@,Rechazado
-CL18,,De la Cruz,712345,maria@@gmail..com,Rechazado
-CL19,AlejandroFernandezGonzalezMartinezPerezLopez,FernandezMartinezGonzalezRodriguezPerezLópez,71234567,carlosgmail.com,Rechazado
-CL20,AlejandroFernandezGonzalezMartinezPerezLopez,Gomez123,59171234567,usuario@,Rechazado
-CL21,AlejandroFernandezGonzalezMartinezPerezLopez,López#,,maria@@gmail..com,Rechazado
-CL22,AlejandroFernandezGonzalezMartinezPerezLopez,Pérez,712345,carlos@gmail.com,Rechazado
-CL23,AlejandroFernandezGonzalezMartinezPerezLopez,De la Cruz,712345678901234,usuario@ucb.edu.bo,Rechazado
-CL24,AlejandroFernandezGonzalezMartinezPerezLopez,,71A23B67,,Rechazado
-CL25,Juan123,Gomez123,,carlos@gmail.com,Rechazado
-CL26,Juan123,López#,712345,usuario@ucb.edu.bo,Rechazado
-CL27,Juan123,Pérez,712345678901234,,Rechazado
-CL28,Juan123,De la Cruz,71A23B67,carlosgmail.com,Rechazado
-CL29,Juan123,,71234567,usuario@,Rechazado
-CL30,Juan123,FernandezMartinezGonzalezRodriguezPerezLópez,59171234567,maria@@gmail..com,Rechazado
-CL31,@Pedro!,López#,712345678901234,carlosgmail.com,Rechazado
-CL32,@Pedro!,Pérez,71A23B67,usuario@,Rechazado
-CL33,@Pedro!,De la Cruz,71234567,maria@@gmail..com,Rechazado
-CL34,@Pedro!,,59171234567,carlos@gmail.com,Rechazado
-CL35,@Pedro!,FernandezMartinezGonzalezRodriguezPerezLópez,,usuario@ucb.edu.bo,Rechazado
-CL36,@Pedro!,Gomez123,712345,,Rechazado
+caso,nombre,apellido,telefono,correo,esperado,particion,observacionescaso,nombre,apellido,telefono,correo,esperado
+
+CL1,Carlos,Pérez,71234567,carlos@gmail.com,valido,VALIDO_BASICO,Todos los campos válidos con formato correctoCL1,Carlos,Pérez,71234567,carlos@gmail.com,Aceptado
+
+CL2,Carlos,De la Cruz,59171234567,usuario@ucb.edu.bo,valido,VALIDO_APELLIDO_COMPUESTO,Apellido compuesto válido con espacio - Telefono no es requerido puede estar vacio pero si se llena debe ser validoCL2,Carlos,De la Cruz,61234567,usuario@ucb.edu.bo,Aceptado
+
+CL3,Carlos,,,,,invalido,APELLIDO_VACIO_TELEFONO_VACIO_CORREO_VACIO,Falta apellido (requerido) y correo (requerido) - Telefono no es requeridoCL3,Carlos,,,,Rechazado
+
+CL4,Carlos,FernandezMartinezGonzalezRodriguezPerezLópez,712345,carlosgmail.com,invalido,APELLIDO_MAYOR_MAX_TELEFONO_MENOR_MIN_CORREO_FORMATO_INVALIDO,Apellido >30 caracteres - Telefono <7 dígitos - Correo sin @CL4,Carlos,FernandezMartinezGonzalezRodriguezPerezLópez,712345,carlosgmail.com,Rechazado
+
+CL5,Carlos,Gomez123,712345678901234,usuario@,invalido,APELLIDO_CONTIENE_NUMEROS_TELEFONO_MAYOR_MAX_CORREO_FORMATO_INVALIDO,Apellido con números - Telefono >8 dígitos - Correo incompletoCL5,Carlos,Gomez123,712345678901234,usuario@,Rechazado
+
+CL6,Carlos,López#,71A23B67,maría@@gmail..com,invalido,APELLIDO_CARACTERES_ESPECIALES_TELEFONO_FORMATO_INVALIDO_CORREO_FORMATO_INVALIDO,Apellido con # - Telefono con letras - Correo con @@ y ..CL6,Carlos,López#,71A23B67,maria@@gmail..com,Rechazado
+
+CL7,María José,De la Cruz,,carlosgmail.com,invalido,NOMBRE_VALIDO_COMPUESTO_TELEFONO_VACIO_CORREO_FORMATO_INVALIDO,Nombre compuesto válido - Telefono vacío (válido porque no es requerido) - Correo sin @CL7,María José,De la Cruz,,carlosgmail.com,Rechazado
+
+CL8,María José,,712345,usuario@,invalido,NOMBRE_VALIDO_COMPUESTO_APELLIDO_VACIO_TELEFONO_MENOR_MIN_CORREO_FORMATO_INVALIDO,Nombre compuesto válido - Sin apellido (requerido) - Telefono <7 - Correo incompletoCL8,María José,,712345,usuario@,Rechazado
+
+CL9,María José,FernandezMartinezGonzalezRodriguezPerezLópez,712345678901234,maría@@gmail..com,invalido,NOMBRE_VALIDO_COMPUESTO_APELLIDO_MAYOR_MAX_TELEFONO_MAYOR_MAX_CORREO_FORMATO_INVALIDO,Nombre compuesto - Apellido >30 - Telefono >8 - Correo con @@ y ..CL9,María José,FernandezMartinezGonzalezRodriguezPerezLópez,712345678901234,maria@@gmail..com,Rechazado
+
+CL10,María José,Gomez123,71A23B67,carlos@gmail.com,invalido,NOMBRE_VALIDO_COMPUESTO_APELLIDO_CONTIENE_NUMEROS_TELEFONO_FORMATO_INVALIDO,Nombre compuesto - Apellido con números - Telefono con letrasCL10,María José,Gomez123,71A23B67,carlos@gmail.com,Rechazado
+
+CL11,María José,López#,71234567,usuario@ucb.edu.bo,invalido,NOMBRE_VALIDO_COMPUESTO_APELLIDO_CARACTERES_ESPECIALES,Nombre compuesto válido - Apellido con carácter especial #CL11,María José,López#,71234567,usuario@ucb.edu.bo,Rechazado
+
+CL12,María José,Pérez,59171234567,,invalido,NOMBRE_VALIDO_COMPUESTO_CORREO_VACIO,Nombre y apellido válidos - Telefono válido - Sin correo (requerido)CL12,María José,Pérez,59171234567,,Rechazado
+
+CL13,,,712345678901234,carlos@gmail.com,invalido,NOMBRE_VACIO_APELLIDO_VACIO_TELEFONO_MAYOR_MAX,Sin nombre (requerido) - Sin apellido (requerido) - Telefono >8 dígitosCL13,,,712345678901234,carlos@gmail.com,Rechazado
+
+CL14,,FernandezMartinezGonzalezRodriguezPerezLópez,71A23B67,usuario@ucb.edu.bo,invalido,NOMBRE_VACIO_APELLIDO_MAYOR_MAX_TELEFONO_FORMATO_INVALIDO,Sin nombre (requerido) - Apellido >30 - Telefono con letrasCL14,,FernandezMartinezGonzalezRodriguezPerezLópez,71A23B67,usuario@ucb.edu.bo,Rechazado
+
+CL15,,Gomez123,71234567,,invalido,NOMBRE_VACIO_APELLIDO_CONTIENE_NUMEROS_CORREO_VACIO,Sin nombre (requerido) - Sin correo (requerido) - Apellido con númerosCL15,,Gomez123,71234567,,Rechazado
+
+CL16,,López#,59171234567,carlosgmail.com,invalido,NOMBRE_VACIO_APELLIDO_CARACTERES_ESPECIALES_CORREO_FORMATO_INVALIDO,Sin nombre (requerido) - Apellido con # - Correo sin @CL16,,López#,59171234567,carlosgmail.com,Rechazado
+
+CL17,,Pérez,,usuario@,invalido,NOMBRE_VACIO_TELEFONO_VACIO_CORREO_FORMATO_INVALIDO,Sin nombre (requerido) - Sin telefono - Correo incompletoCL17,,Pérez,,usuario@,Rechazado
+
+CL18,,De la Cruz,712345,maría@@gmail..com,invalido,NOMBRE_VACIO_TELEFONO_MENOR_MIN_CORREO_FORMATO_INVALIDO,Sin nombre (requerido) - Telefono <7 dígitos - Correo con @@ y ..CL18,,De la Cruz,712345,maria@@gmail..com,Rechazado
+
+CL19,AlejandroFernandezGonzalezMartinezPerezLopez,FernandezMartinezGonzalezRodriguezPerezLópez,71234567,carlosgmail.com,invalido,NOMBRE_MAYOR_MAX_APELLIDO_MAYOR_MAX_CORREO_FORMATO_INVALIDO,Nombre >30 - Apellido >30 - Correo sin @CL19,AlejandroFernandezGonzalezMartinezPerezLopez,FernandezMartinezGonzalezRodriguezPerezLópez,71234567,carlosgmail.com,Rechazado
+
+CL20,AlejandroFernandezGonzalezMartinezPerezLopez,Gomez123,59171234567,usuario@,invalido,NOMBRE_MAYOR_MAX_APELLIDO_CONTIENE_NUMEROS_CORREO_FORMATO_INVALIDO,Nombre >30 - Apellido con números - Correo incompletoCL20,AlejandroFernandezGonzalezMartinezPerezLopez,Gomez123,59171234567,usuario@,Rechazado
+
+CL21,AlejandroFernandezGonzalezMartinezPerezLopez,López#,,maría@@gmail..com,invalido,NOMBRE_MAYOR_MAX_APELLIDO_CARACTERES_ESPECIALES_TELEFONO_VACIO_CORREO_FORMATO_INVALIDO,Nombre >30 - Apellido con # - Sin telefono - Correo con @@ y ..CL21,AlejandroFernandezGonzalezMartinezPerezLopez,López#,,maria@@gmail..com,Rechazado
+
+CL22,AlejandroFernandezGonzalezMartinezPerezLopez,Pérez,712345,carlos@gmail.com,invalido,NOMBRE_MAYOR_MAX_TELEFONO_MENOR_MIN,Nombre >30 caracteres - Telefono <7 dígitosCL22,AlejandroFernandezGonzalezMartinezPerezLopez,Pérez,712345,carlos@gmail.com,Rechazado
+
+CL23,AlejandroFernandezGonzalezMartinezPerezLopez,De la Cruz,712345678901234,usuario@ucb.edu.bo,invalido,NOMBRE_MAYOR_MAX_TELEFONO_MAYOR_MAX,Nombre >30 caracteres - Telefono >8 dígitosCL23,AlejandroFernandezGonzalezMartinezPerezLopez,De la Cruz,712345678901234,usuario@ucb.edu.bo,Rechazado
+
+CL24,AlejandroFernandezGonzalezMartinezPerezLopez,,71A23B67,,invalido,NOMBRE_MAYOR_MAX_APELLIDO_VACIO_TELEFONO_FORMATO_INVALIDO_CORREO_VACIO,Nombre >30 - Sin apellido - Telefono con letras - Sin correoCL24,AlejandroFernandezGonzalezMartinezPerezLopez,,71A23B67,,Rechazado
+
+CL25,Juan123,Gomez123,,carlos@gmail.com,invalido,NOMBRE_CONTIENE_NUMEROS_APELLIDO_CONTIENE_NUMEROS_TELEFONO_VACIO,Nombre con números - Apellido con números - Sin telefonoCL25,Juan123,Gomez123,,carlos@gmail.com,Rechazado
+
+CL26,Juan123,López#,712345,usuario@ucb.edu.bo,invalido,NOMBRE_CONTIENE_NUMEROS_APELLIDO_CARACTERES_ESPECIALES_TELEFONO_MENOR_MIN,Nombre con números - Apellido con # - Telefono <7 dígitosCL26,Juan123,López#,712345,usuario@ucb.edu.bo,Rechazado
+
+CL27,Juan123,Pérez,712345678901234,,invalido,NOMBRE_CONTIENE_NUMEROS_TELEFONO_MAYOR_MAX_CORREO_VACIO,Nombre con números - Telefono >8 dígitos - Sin correoCL27,Juan123,Pérez,712345678901234,,Rechazado
+
+CL28,Juan123,De la Cruz,71A23B67,carlosgmail.com,invalido,NOMBRE_CONTIENE_NUMEROS_TELEFONO_FORMATO_INVALIDO_CORREO_FORMATO_INVALIDO,Nombre con números - Telefono con letras - Correo sin @CL28,Juan123,De la Cruz,71A23B67,carlosgmail.com,Rechazado
+
+CL29,Juan123,,71234567,usuario@,invalido,NOMBRE_CONTIENE_NUMEROS_APELLIDO_VACIO_CORREO_FORMATO_INVALIDO,Nombre con números - Sin apellido - Correo incompletoCL29,Juan123,,71234567,usuario@,Rechazado
+
+CL30,Juan123,FernandezMartinezGonzalezRodriguezPerezLópez,59171234567,maría@@gmail..com,invalido,NOMBRE_CONTIENE_NUMEROS_APELLIDO_MAYOR_MAX_CORREO_FORMATO_INVALIDO,Nombre con números - Apellido >30 - Correo con @@ y ..CL30,Juan123,FernandezMartinezGonzalezRodriguezPerezLópez,59171234567,maria@@gmail..com,Rechazado
+
+CL31,@Pedro!,López#,712345678901234,carlosgmail.com,invalido,NOMBRE_CARACTERES_ESPECIALES_APELLIDO_CARACTERES_ESPECIALES_TELEFONO_MAYOR_MAX_CORREO_FORMATO_INVALIDO,Nombre con @ y ! - Apellido con # - Telefono >8 - Correo sin @CL31,@Pedro!,López#,712345678901234,carlosgmail.com,Rechazado
+
+CL32,@Pedro!,Pérez,71A23B67,usuario@,invalido,NOMBRE_CARACTERES_ESPECIALES_TELEFONO_FORMATO_INVALIDO_CORREO_FORMATO_INVALIDO,Nombre con @ y ! - Telefono con letras - Correo incompletoCL32,@Pedro!,Pérez,71A23B67,usuario@,Rechazado
+
+CL33,@Pedro!,De la Cruz,71234567,maría@@gmail..com,invalido,NOMBRE_CARACTERES_ESPECIALES_CORREO_FORMATO_INVALIDO,Nombre con @ y ! - Correo con @@ y ..CL33,@Pedro!,De la Cruz,71234567,maria@@gmail..com,Rechazado
+
+CL34,@Pedro!,,59171234567,carlos@gmail.com,invalido,NOMBRE_CARACTERES_ESPECIALES_APELLIDO_VACIO,Nombre con @ y ! - Sin apellido (requerido)CL34,@Pedro!,,59171234567,carlos@gmail.com,Rechazado
+
+CL35,@Pedro!,FernandezMartinezGonzalezRodriguezPerezLópez,,usuario@ucb.edu.bo,invalido,NOMBRE_CARACTERES_ESPECIALES_APELLIDO_MAYOR_MAX_TELEFONO_VACIO,Nombre con @ y ! - Apellido >30 - Sin telefonoCL35,@Pedro!,FernandezMartinezGonzalezRodriguezPerezLópez,,usuario@ucb.edu.bo,Rechazado
+
+CL36,@Pedro!,Gomez123,712345,,invalido,NOMBRE_CARACTERES_ESPECIALES_APELLIDO_CONTIENE_NUMEROS_TELEFONO_MENOR_MIN_CORREO_VACIO,Nombre con @ y ! - Apellido con números - Telefono <7 - Sin correoCL36,@Pedro!,Gomez123,712345,,Rechazado
+
