@@ -16,6 +16,7 @@
 5. [Módulos Implementados](#-módulos-implementados)
    - [Productos](#módulo-productos)
    - [Repartidores](#módulo-repartidores)
+   - [Clientes](#módulo-clientes)
 6. [Análisis de Particiones Equivalentes](#-análisis-de-particiones-equivalentes)
 7. [Estructura de Archivos](#-estructura-de-archivos)
 8. [Reportes y Resultados](#-reportes-y-resultados)
@@ -53,6 +54,9 @@ pytest -m productos -v
 
 # Pruebas de Repartidores (36 casos)
 pytest -m repartidores -v
+
+# Pruebas de Clientes (36 casos)
+pytest -m clientes -v
 
 # Pruebas críticas (smoke tests)
 pytest -m smoke -v
@@ -417,6 +421,131 @@ pytest tests/test_repartidores.py -k "telefono"
 
 ---
 
+### Módulo: Clientes
+
+#### Descripción
+Validación del formulario de registro de clientes en `/Clientes/Create`.
+
+#### Campos Validados
+
+| Campo | Validación | Rango/Formato |
+|-------|-----------|---------------|
+| **Nombre** | Requerido, RegularExpression, StringLength | 3-30 caracteres, solo letras, inicia mayúscula |
+| **Apellido** | Requerido, RegularExpression, StringLength | 3-30 caracteres, solo letras, inicia mayúscula |
+| **Teléfono** | Opcional, RegularExpression, Phone | 7-8 dígitos, inicia 6 o 7 |
+| **Correo** | Requerido, EmailAddress | Formato email válido |
+
+#### Estadísticas
+- **Total de casos:** 36
+- **Casos válidos:** 2 (CL1, CL2)
+- **Casos inválidos:** 34
+- **Particiones:** 20 únicas
+
+#### Particiones Implementadas
+
+##### **Nombre (3-30 caracteres, solo letras)**
+- `NOMBRE_VACIO`: Cadena vacía → ❌ Error
+- `NOMBRE_MENOR_MIN`: 1-2 caracteres → ❌ Error
+- `NOMBRE_VALIDO_MIN`: 3 caracteres → ✅ Válido
+- `NOMBRE_VALIDO_MEDIO`: 4-29 caracteres → ✅ Válido
+- `NOMBRE_VALIDO_MAX`: 30 caracteres → ✅ Válido
+- `NOMBRE_MAYOR_MAX`: 31+ caracteres → ❌ Error
+- `NOMBRE_CONTIENE_NUMEROS`: Con dígitos (Juan123) → ❌ Error
+- `NOMBRE_CARACTERES_ESPECIALES`: Con @, !, # → ❌ Error
+- `NOMBRE_VALIDO_COMPUESTO`: Con espacio (María José) → ✅ Válido
+
+##### **Apellido (3-30 caracteres, solo letras)**
+- `APELLIDO_VACIO`: Cadena vacía → ❌ Error
+- `APELLIDO_MENOR_MIN`: 1-2 caracteres → ❌ Error
+- `APELLIDO_VALIDO_MIN`: 3 caracteres → ✅ Válido
+- `APELLIDO_VALIDO_MEDIO`: 4-29 caracteres → ✅ Válido
+- `APELLIDO_VALIDO_MAX`: 30 caracteres → ✅ Válido
+- `APELLIDO_MAYOR_MAX`: 31+ caracteres → ❌ Error
+- `APELLIDO_CONTIENE_NUMEROS`: Con dígitos (Gomez123) → ❌ Error
+- `APELLIDO_CARACTERES_ESPECIALES`: Con # → ❌ Error
+- `APELLIDO_VALIDO_COMPUESTO`: Con espacio (De la Cruz) → ✅ Válido
+
+##### **Teléfono (7-8 dígitos, inicia 6 o 7, OPCIONAL)**
+- `TELEFONO_VACIO`: Campo vacío → ✅ Válido (es opcional)
+- `TELEFONO_MENOR_MIN`: 1-6 dígitos → ❌ Error
+- `TELEFONO_VALIDO_7_DIGITOS`: 7 dígitos iniciando 6 o 7 → ✅ Válido
+- `TELEFONO_VALIDO_8_DIGITOS`: 8 dígitos iniciando 6 o 7 → ✅ Válido
+- `TELEFONO_MAYOR_MAX`: 9+ dígitos → ❌ Error
+- `TELEFONO_FORMATO_INVALIDO`: Contiene letras (71A23B67) → ❌ Error
+
+##### **Correo (formato email)**
+- `CORREO_VACIO`: Campo vacío → ❌ Error
+- `CORREO_VALIDO`: Formato correcto (carlos@gmail.com) → ✅ Válido
+- `CORREO_FORMATO_INVALIDO`: 
+  - Sin @ (carlosgmail.com) → ❌ Error
+  - Incompleto (usuario@) → ❌ Error
+  - Con @@ o .. (maría@@gmail..com) → ❌ Error
+
+#### Casos de Prueba Destacados
+
+**CL1 - Registro Válido Básico:**
+```csv
+CL1, Carlos, Pérez, 71234567, carlos@gmail.com, valido, VALIDO_BASICO
+```
+
+**CL2 - Registro Válido con Apellido Compuesto:**
+```csv
+CL2, Carlos, De la Cruz, 59171234567, usuario@ucb.edu.bo, valido, VALIDO_APELLIDO_COMPUESTO
+```
+
+**CL3 - Campos Requeridos Vacíos:**
+```csv
+CL3, Carlos, , , , invalido, APELLIDO_VACIO_TELEFONO_VACIO_CORREO_VACIO
+```
+
+**CL7 - Nombre Compuesto Válido con Correo Inválido:**
+```csv
+CL7, María José, De la Cruz, , carlosgmail.com, invalido, NOMBRE_VALIDO_COMPUESTO_CORREO_FORMATO_INVALIDO
+```
+
+**CL25 - Nombre y Apellido con Números:**
+```csv
+CL25, Juan123, Gomez123, , carlos@gmail.com, invalido, NOMBRE_CONTIENE_NUMEROS_APELLIDO_CONTIENE_NUMEROS
+```
+
+**CL31 - Caracteres Especiales en Nombre y Apellido:**
+```csv
+CL31, @Pedro!, López#, 712345678901234, carlosgmail.com, invalido, NOMBRE_CARACTERES_ESPECIALES_APELLIDO_CARACTERES_ESPECIALES
+```
+
+#### Características Especiales
+
+**Nombres y Apellidos Compuestos:**
+El sistema acepta nombres y apellidos compuestos con espacios:
+- Nombres válidos: "María José", "Juan Carlos", "Ana María"
+- Apellidos válidos: "De la Cruz", "Del Valle", "De los Santos"
+
+**Teléfono Opcional:**
+A diferencia de otros campos, el teléfono NO es requerido:
+- Puede dejarse vacío y el registro será exitoso
+- Si se llena, debe cumplir con las validaciones (7-8 dígitos, inicia 6 o 7)
+
+#### Ejecutar Pruebas
+
+```bash
+# Todas las pruebas de clientes
+pytest -m clientes -v
+
+# Solo casos válidos
+pytest tests/test_clientes.py -k "CL1 or CL2"
+
+# Solo validaciones de nombre
+pytest tests/test_clientes.py -k "nombre"
+
+# Solo validaciones de correo
+pytest tests/test_clientes.py -k "correo"
+
+# Casos con nombres compuestos
+pytest tests/test_clientes.py -k "compuesto"
+```
+
+---
+
 ## 📊 Análisis de Particiones Equivalentes
 
 ### ¿Qué son las Particiones Equivalentes?
@@ -466,6 +595,11 @@ Particiones Inválidas:
 
 **Repartidores:**
 - 16 particiones únicas identificadas
+- 36 casos de prueba generados
+- 100% cobertura de particiones
+
+**Clientes:**
+- 20 particiones únicas identificadas
 - 36 casos de prueba generados
 - 100% cobertura de particiones
 
@@ -975,13 +1109,13 @@ Para preguntas o problemas:
 
 | Métrica | Valor |
 |---------|-------|
-| **Módulos Automatizados** | 2 |
-| **Total Casos de Prueba** | 69 |
-| **Particiones Únicas** | 31 |
+| **Módulos Automatizados** | 3 |
+| **Total Casos de Prueba** | 105 |
+| **Particiones Únicas** | 51 |
 | **Cobertura de Particiones** | 100% |
-| **Archivos Python** | 8 |
-| **Líneas de Código** | ~1,500 |
-| **Tiempo Ejecución Promedio** | ~60 segundos |
+| **Archivos Python** | 11 |
+| **Líneas de Código** | ~2,400 |
+| **Tiempo Ejecución Promedio** | ~90 segundos |
 
 ### Tecnologías Utilizadas
 
@@ -998,7 +1132,7 @@ Para preguntas o problemas:
 
 1. ✅ Ejecutar todas las pruebas: `pytest -v`
 2. ✅ Generar reporte HTML: `pytest --html=reports/report.html`
-3. 🔜 Implementar módulo Clientes
+3. ✅ Implementar módulo Clientes
 4. 🔜 Implementar módulo Pedidos
 5. 🔜 Integrar con CI/CD
 6. 🔜 Agregar capturas de pantalla en fallos
