@@ -1,4 +1,4 @@
-caso,nombre,apellido,telefono,correo,esperado,particion,observacionescaso,nombre,apellido,telefono,correo,esperado
+caso,nombre,apellido,telefono,correo,esperado,particion,observaciones,caso,nombre,apellido,telefono,correo,esperado
 
 CL1,Carlos,Pérez,71234567,carlos@gmail.com,valido,VALIDO_BASICO,Todos los campos válidos con formato correctoCL1,Carlos,Pérez,71234567,carlos@gmail.com,Aceptado
 
