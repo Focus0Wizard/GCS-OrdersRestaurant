@@ -2,7 +2,7 @@ caso,nombre,apellido,telefono,correo,esperado,particion,observaciones,caso,nombr
 
 CL1,Carlos,Pérez,71234567,carlos@gmail.com,valido,VALIDO_BASICO,Todos los campos válidos con formato correctoCL1,Carlos,Pérez,71234567,carlos@gmail.com,Aceptado
 
-CL2,Carlos,De la Cruz,59171234567,usuario@ucb.edu.bo,valido,VALIDO_APELLIDO_COMPUESTO,Apellido compuesto válido con espacio - Telefono no es requerido puede estar vacio pero si se llena debe ser validoCL2,Carlos,De la Cruz,61234567,usuario@ucb.edu.bo,Aceptado
+CL2,Carlos,De la Cruz,71234567,usuario@ucb.edu.bo,valido,VALIDO_APELLIDO_COMPUESTO,Apellido compuesto válido con espacio - Telefono no es requerido puede estar vacio pero si se llena debe ser validoCL2,Carlos,De la Cruz,61234567,usuario@ucb.edu.bo,Aceptado
 
 CL3,Carlos,,,,,invalido,APELLIDO_VACIO_TELEFONO_VACIO_CORREO_VACIO,Falta apellido (requerido) y correo (requerido) - Telefono no es requeridoCL3,Carlos,,,,Rechazado
 

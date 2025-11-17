@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MyDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 4, 6)) // ajusta la versión según tu MySQL
+        new MySqlServerVersion(new Version(8, 4, 6)) 
     ));
 
 // ------------------ REGISTRAR REPOSITORIOS Y SERVICIOS ------------------

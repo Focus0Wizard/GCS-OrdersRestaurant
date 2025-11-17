@@ -20,13 +20,6 @@ namespace Restaurant.Repositories
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            // var prop = typeof(T).GetProperty("Estado");
-            // if (prop != null)
-            // {
-            //     return await _dbSet.AsQueryable()
-            //                        .Where(e => EF.Property<sbyte?>(e, "Estado") == 1)
-            //                        .ToListAsync();
-            // }
             return await _dbSet.ToListAsync();
         }
 

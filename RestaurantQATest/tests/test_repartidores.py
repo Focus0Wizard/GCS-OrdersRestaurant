@@ -18,7 +18,7 @@ from pages.repartidor_page import RepartidorPage
 
 # ==================== CARGA DE DATOS DE PRUEBA ====================
 
-DATA_FILE = "Data/repartidores_tests.csv"
+DATA_FILE = "/home/jhonn/Documentos/Universidad/8vo_Semestre/QA/GCS-OrdersRestaurant/RestaurantQATest/Data/repartidores_tests.csv"
 
 
 def load_test_cases():

@@ -2,9 +2,6 @@ using Restaurant.Entities;
 
 namespace RestaurantTests.Helpers;
 
-/// <summary>
-/// Factory para generar datos de prueba de manera consistente
-/// </summary>
 public static class TestDataFactory
 {
     public static Producto CreateValidProducto(short id = 1, string nombre = "Producto Test", decimal precio = 10.50m)

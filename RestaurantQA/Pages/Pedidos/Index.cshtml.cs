@@ -90,8 +90,8 @@ namespace Restaurant.Pages.Pedidos
 
             Pedido.NombreCliente = cliente.Nombre;
             Pedido.ApellidoCliente = cliente.Apellido;
-            Pedido.UsuarioId = 1; // TODO: asignar usuario logueado
-            Pedido.EstadoPedido = 1; // Ejemplo: 1 = Creado
+            Pedido.UsuarioId = 1;
+            Pedido.EstadoPedido = 1;
 
             await _pedidoService.AddPedidoAsync(Pedido, detalles);
 
