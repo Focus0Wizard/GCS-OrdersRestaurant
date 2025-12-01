@@ -15,13 +15,23 @@ namespace RestaurantTests.Pages.Clientes
         public async Task OnGetAsync_DeberiaCargarClienteExistente_ParaEdicion()
         {
             var repo = new Mock<IGenericRepository<Cliente>>();
+            var clienteExistente = new Cliente 
+            { 
+                Id = 1, 
+                Nombre = "Pedro", 
+                Apellido = "Perez",
+                Correo = "pedro@test.com",
+                Telefono = "12345678",
+                Estado = 1 
+            };
             repo.Setup(r => r.GetByIdAsync(1))
-                .ReturnsAsync(new Cliente { Id = 1, Nombre = "Pedro", Estado = 1 });
+                .ReturnsAsync(clienteExistente);
 
             var page = new CreateModel(repo.Object);
 
             var result = await page.OnGetAsync(1);
 
+            page.Cliente.Should().NotBeNull();
             page.Cliente.Nombre.Should().Be("Pedro");
             result.Should().BeOfType<PageResult>();
         }

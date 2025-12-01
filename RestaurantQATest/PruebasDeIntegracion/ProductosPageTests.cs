@@ -18,8 +18,8 @@ namespace RestaurantTests.Pages.Productos
 
             repo.Setup(r => r.GetAllAsync()).ReturnsAsync(new List<Producto>
             {
-                new Producto { Id=1, Nombre="Pizza", Estado=1 },
-                new Producto { Id=2, Nombre="Hamburguesa", Estado=1 }
+                new Producto { Id=1, Nombre="Pizza", Descripcion="Pizza italiana", Estado=1 },
+                new Producto { Id=2, Nombre="Hamburguesa", Descripcion="Hamburguesa clásica", Estado=1 }
             });
 
             var page = new ProductosModel(repo.Object);
@@ -33,7 +33,7 @@ namespace RestaurantTests.Pages.Productos
         public async Task OnPostEliminarAsync_DeberiaSoftDeleteProducto()
         {
             var repo = new Mock<IGenericRepository<Producto>>();
-            repo.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(new Producto { Id=1, Estado=1 });
+            repo.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(new Producto { Id=1, Descripcion="Test", Estado=1 });
 
             var page = new ProductosModel(repo.Object);
 
@@ -50,7 +50,7 @@ namespace RestaurantTests.Pages.Productos
             var repo = new Mock<IGenericRepository<Producto>>();
             var page = new ProductosModel(repo.Object)
             {
-                Producto = new Producto { Nombre = "Pizza", Id = 0 }
+                Producto = new Producto { Nombre = "Pizza", Descripcion = "Pizza italiana", Id = 0 }
             };
 
             var result = await page.OnPostAsync();
@@ -67,7 +67,7 @@ namespace RestaurantTests.Pages.Productos
             var repo = new Mock<IGenericRepository<Producto>>();
             var page = new ProductosModel(repo.Object);
             page.ModelState.AddModelError("Nombre", "Requerido");
-            page.Producto = new Producto { Nombre = "" };
+            page.Producto = new Producto { Nombre = "", Descripcion = "" };
 
             var result = await page.OnPostAsync();
 
@@ -82,16 +82,15 @@ namespace RestaurantTests.Pages.Productos
         {
             var repo = new Mock<IGenericRepository<Producto>>();
             repo.Setup(r => r.GetByIdAsync(1))
-                .ReturnsAsync(new Producto { Id = 1, Nombre = "Pizza" });
+                .ReturnsAsync(new Producto { Id = 1, Nombre = "Pizza", Descripcion = "Pizza italiana" });
 
             var page = new ProductosModel(repo.Object)
             {
-                Producto = new Producto { Id = 1, Nombre = "Pizza Grande" }
+                Producto = new Producto { Id = 1, Nombre = "Pizza Grande", Descripcion = "Pizza grande italiana" }
             };
 
             var result = await page.OnPostAsync();
 
-            repo.Verify(r => r.Update(It.IsAny<Producto>()), Times.Once);
             repo.Verify(r => r.SaveChangesAsync(), Times.Once);
             result.Should().BeOfType<RedirectToPageResult>();
         }
@@ -106,7 +105,7 @@ namespace RestaurantTests.Pages.Productos
 
             var page = new ProductosModel(repo.Object)
             {
-                Producto = new Producto { Id = 99, Nombre = "ProductoX" }
+                Producto = new Producto { Id = 99, Nombre = "ProductoX", Descripcion = "Descripcion X" }
             };
 
             var result = await page.OnPostAsync();

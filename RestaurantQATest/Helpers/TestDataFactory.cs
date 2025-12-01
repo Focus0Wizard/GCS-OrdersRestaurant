@@ -13,6 +13,7 @@ public static class TestDataFactory
             Precio = precio,
             Stock = 10,
             CategoriaId = 1,
+            Descripcion = "Descripción del producto",
             FechaCreacion = DateTime.Now,
             UltimaActualizacion = DateTime.Now,
             Estado = 1,

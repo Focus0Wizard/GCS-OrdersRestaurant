@@ -1,3 +1,4 @@
+#language: es-ES
 Feature: Gestión de Clientes con Pruebas de Integración
   Validar el comportamiento de las operaciones CRUD del repositorio ClienteRepository 
   contra la base de datos a través de pruebas de Integración.

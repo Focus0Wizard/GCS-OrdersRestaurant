@@ -31,6 +31,11 @@ namespace Restaurant.Services
 
         public async Task<Pedido> AddPedidoAsync(Pedido pedido, List<DetallePedido> detalles)
         {
+            if (detalles == null || detalles.Count == 0)
+            {
+                throw new ArgumentException("El pedido debe contener al menos un detalle");
+            }
+
             pedido.FechaCreacion = DateTime.Now;
             pedido.UltimaActualizacion = DateTime.Now;
             pedido.Total = detalles.Sum(d => d.Subtotal);

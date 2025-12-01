@@ -1,3 +1,4 @@
+#language: es-ES
 Feature: Gestión de Productos con Pruebas de Integración
   Validar el comportamiento de las operaciones CRUD del repositorio ProductoRepository 
   contra la base de datos a través de pruebas de Integración.

@@ -1,3 +1,4 @@
+#language: es-ES
 Feature: Gestión de Repartidores con Pruebas de Integración
   Validar el comportamiento de las operaciones CRUD del repositorio RepartidorRepository 
   contra la base de datos a través de pruebas de Integración.

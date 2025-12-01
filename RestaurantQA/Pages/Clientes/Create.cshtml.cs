@@ -26,11 +26,17 @@ namespace Restaurant.Pages.Clientes
                     return RedirectToPage("./Index");
 
                 Cliente = clienteExistente;
-                ViewData["Title"] = "Editar Cliente";
+                if (ViewData != null)
+                {
+                    ViewData["Title"] = "Editar Cliente";
+                }
             }
             else
             {
-                ViewData["Title"] = "Registrar Cliente";
+                if (ViewData != null)
+                {
+                    ViewData["Title"] = "Registrar Cliente";
+                }
             }
 
             return Page();

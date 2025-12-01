@@ -377,7 +377,7 @@ namespace RestaurantQATest.BDD.Steps
         [Then(@"el pedido debe tener Estado igual a ""(.*)""")]
         public void ThenElPedidoDebeTenerEstadoIgualA(string estado)
         {
-            _context.PedidoActual!.Estado.Should().Be(sbyte.Parse(estado));
+            _context.PedidoActual!.EstadoPedido.Should().Be(sbyte.Parse(estado));
         }
 
         [Given(@"que existen varios pedidos registrados")]

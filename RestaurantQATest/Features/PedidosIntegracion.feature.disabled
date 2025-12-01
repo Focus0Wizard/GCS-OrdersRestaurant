@@ -1,3 +1,4 @@
+#language: es-ES
 Feature: Gestión de Pedidos con Pruebas de Integración
   Validar el comportamiento del proceso principal de pedidos y operaciones CRUD 
   del repositorio PedidoRepository contra la base de datos a través de pruebas de Integración.
