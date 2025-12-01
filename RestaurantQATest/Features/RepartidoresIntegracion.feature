@@ -1,0 +1,74 @@
+Feature: Gestión de Repartidores con Pruebas de Integración
+  Validar el comportamiento de las operaciones CRUD del repositorio RepartidorRepository 
+  contra la base de datos a través de pruebas de Integración.
+
+  Background:
+    Given que la base de datos está disponible
+
+  # -------------------------
+  #      INSERT - Happy Path 1
+  # -------------------------
+  Scenario: Registrar un nuevo repartidor correctamente
+    Given que se tiene un nuevo repartidor con Nombre "Carlos", Apellido "Rodríguez", Teléfono "70123456", EstadoEntrega "Disponible" y Tipo "Motocicleta"
+    When guardo el repartidor en la base de datos
+    Then el sistema debe devolver un Id válido para el repartidor
+    And el repartidor con Teléfono "70123456" debe existir en la base de datos
+
+  # -------------------------
+  #      INSERT - Happy Path 2
+  # -------------------------
+  Scenario: Registrar un segundo repartidor correctamente
+    Given que se tiene un nuevo repartidor con Nombre "Laura", Apellido "Fernández", Teléfono "60987654", EstadoEntrega "Disponible" y Tipo "Bicicleta"
+    When guardo el repartidor en la base de datos
+    Then el sistema debe devolver un Id válido para el repartidor
+    And el repartidor con Teléfono "60987654" debe existir en la base de datos
+
+  # -------------------------
+  #      INSERT - Unhappy Path
+  # -------------------------
+  Scenario: Fallar al registrar repartidor con teléfono inválido
+    Given que se tiene un nuevo repartidor con Nombre "Pedro", Apellido "García", Teléfono "1234", EstadoEntrega "Disponible" y Tipo "Auto"
+    When intento guardar el repartidor con teléfono inválido en la base de datos
+    Then el sistema debe rechazar el repartidor por validación de teléfono
+
+  # -------------------------
+  #      UPDATE - Happy Path 1
+  # -------------------------
+  Scenario: Actualizar el estado de entrega de un repartidor existente
+    Given que existe un repartidor con Id "1", Nombre "Jorge", Apellido "López", Teléfono "70111222" y EstadoEntrega "Disponible"
+    When actualizo el EstadoEntrega del repartidor a "En Entrega"
+    Then el repartidor debe tener el nuevo EstadoEntrega "En Entrega"
+
+  # -------------------------
+  #      UPDATE - Happy Path 2
+  # -------------------------
+  Scenario: Actualizar el tipo de transporte de un repartidor existente
+    Given que existe un repartidor con Id "2", Nombre "Sofía", Apellido "Martínez", Teléfono "60333444" y Tipo "Bicicleta"
+    When actualizo el Tipo del repartidor a "Motocicleta"
+    Then el repartidor debe tener el nuevo Tipo "Motocicleta"
+
+  # -------------------------
+  #      UPDATE - Unhappy Path
+  # -------------------------
+  Scenario: Fallar al actualizar repartidor con nombre inválido
+    Given que existe un repartidor con Id "3", Nombre "Diego", Apellido "Torres", Teléfono "70555666" y EstadoEntrega "Disponible"
+    When intento actualizar el Nombre del repartidor a "123Invalid"
+    Then el sistema debe rechazar la actualización del repartidor por validación
+
+  # -------------------------
+  #       DELETE - Happy Path
+  # -------------------------
+  Scenario: Eliminar un repartidor con soft delete
+    Given que existe un repartidor con Id "4", Nombre "Valeria", Apellido "Ramírez", Teléfono "60777888" y EstadoEntrega "Disponible"
+    When elimino el repartidor usando soft delete
+    Then el repartidor debe tener Estado igual a "0"
+    And el repartidor no debe aparecer en consultas de repartidores activos
+
+  # -------------------------
+  #       SELECT ALL - Happy Path
+  # -------------------------
+  Scenario: Listar todos los repartidores activos
+    Given que existen varios repartidores registrados con estado activo
+    When solicito el listado de todos los repartidores
+    Then el sistema debe devolver al menos un repartidor
+    And todos los repartidores deben tener Estado igual a "1"

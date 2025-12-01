@@ -1,0 +1,19 @@
+{
+  "$schema": "https://specflow.org/specflow-config.json",
+  "language": {
+    "feature": "es-ES"
+  },
+  "bindingCulture": {
+    "name": "es-ES"
+  },
+  "stepAssemblies": [
+    {
+      "assembly": "RestaurantQATest"
+    }
+  ],
+  "trace": {
+    "traceSuccessfulSteps": true,
+    "traceTimings": true,
+    "minTracedDuration": "0:0:0.1"
+  }
+}

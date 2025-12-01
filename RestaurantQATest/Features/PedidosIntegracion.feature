@@ -1,0 +1,87 @@
+Feature: Gestión de Pedidos con Pruebas de Integración
+  Validar el comportamiento del proceso principal de pedidos y operaciones CRUD 
+  del repositorio PedidoRepository contra la base de datos a través de pruebas de Integración.
+
+  Background:
+    Given que la base de datos está disponible
+
+  # -------------------------
+  #      PROCESO PRINCIPAL - Happy Path
+  # -------------------------
+  Scenario: Crear un pedido completo con cliente, productos y repartidor
+    Given que existe un cliente registrado con Id "1"
+    And que existe un producto con Id "1" y precio "50.00"
+    And que existe un repartidor con Id "1"
+    When creo un nuevo pedido con ClienteId "1", UsuarioId "1", Total "50.00"
+    And asigno el RiderId "1" al pedido
+    Then el pedido debe guardarse correctamente
+    And el pedido debe tener EstadoPedido igual a "1"
+    And el pedido debe estar asociado al cliente, producto y repartidor
+
+  # -------------------------
+  #      INSERT - Happy Path 1
+  # -------------------------
+  Scenario: Registrar un nuevo pedido correctamente
+    Given que existe un cliente registrado con Id "2"
+    And que se tiene un nuevo pedido con ClienteId "2", UsuarioId "1", NombreCliente "Juan", ApellidoCliente "Pérez" y Total "75.50"
+    When guardo el pedido en la base de datos
+    Then el sistema debe devolver un Id válido para el pedido
+    And el pedido con Total "75.50" debe existir en la base de datos
+
+  # -------------------------
+  #      INSERT - Happy Path 2
+  # -------------------------
+  Scenario: Registrar un segundo pedido correctamente
+    Given que existe un cliente registrado con Id "3"
+    And que se tiene un nuevo pedido con ClienteId "3", UsuarioId "1", NombreCliente "María", ApellidoCliente "González" y Total "100.00"
+    When guardo el pedido en la base de datos
+    Then el sistema debe devolver un Id válido para el pedido
+    And el pedido con Total "100.00" debe existir en la base de datos
+
+  # -------------------------
+  #      INSERT - Unhappy Path
+  # -------------------------
+  Scenario: Fallar al registrar pedido con cliente inexistente
+    Given que se tiene un nuevo pedido con ClienteId "999", UsuarioId "1", NombreCliente "Test", ApellidoCliente "User" y Total "50.00"
+    When intento guardar el pedido sin cliente válido en la base de datos
+    Then el sistema debe rechazar el pedido por relación inválida
+
+  # -------------------------
+  #      UPDATE - Happy Path 1
+  # -------------------------
+  Scenario: Actualizar el estado de un pedido existente
+    Given que existe un pedido con Id "1", ClienteId "1", UsuarioId "1" y EstadoPedido "1"
+    When actualizo el EstadoPedido del pedido a "2"
+    Then el pedido debe tener el nuevo EstadoPedido "2"
+
+  # -------------------------
+  #      UPDATE - Happy Path 2
+  # -------------------------
+  Scenario: Actualizar el total de un pedido existente
+    Given que existe un pedido con Id "2", ClienteId "2", UsuarioId "1" y Total "50.00"
+    When actualizo el Total del pedido a "75.00"
+    Then el pedido debe tener el nuevo Total "75.00"
+
+  # -------------------------
+  #      UPDATE - Unhappy Path
+  # -------------------------
+  Scenario: Fallar al actualizar pedido con total negativo
+    Given que existe un pedido con Id "3", ClienteId "3", UsuarioId "1" y Total "100.00"
+    When intento actualizar el Total del pedido a "-50.00"
+    Then el sistema debe rechazar la actualización del pedido por validación
+
+  # -------------------------
+  #       DELETE - Happy Path
+  # -------------------------
+  Scenario: Eliminar un pedido con soft delete
+    Given que existe un pedido con Id "4", ClienteId "4", UsuarioId "1" y Total "80.00"
+    When elimino el pedido usando soft delete
+    Then el pedido debe tener Estado igual a "0"
+
+  # -------------------------
+  #       SELECT ALL - Happy Path
+  # -------------------------
+  Scenario: Listar todos los pedidos activos
+    Given que existen varios pedidos registrados
+    When solicito el listado de todos los pedidos
+    Then el sistema debe devolver al menos un pedido

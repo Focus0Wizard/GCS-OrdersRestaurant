@@ -1,0 +1,74 @@
+Feature: Gestión de Clientes con Pruebas de Integración
+  Validar el comportamiento de las operaciones CRUD del repositorio ClienteRepository 
+  contra la base de datos a través de pruebas de Integración.
+
+  Background:
+    Given que la base de datos está disponible
+
+  # -------------------------
+  #      INSERT - Happy Path 1
+  # -------------------------
+  Scenario: Registrar un nuevo cliente correctamente con datos válidos
+    Given que se tiene un nuevo cliente con Nombre "Juan", Apellido "Pérez", Teléfono "70123456" y Correo "juan.perez@mail.com"
+    When guardo el cliente en la base de datos
+    Then el sistema debe devolver un Id válido
+    And el cliente con Correo "juan.perez@mail.com" debe existir en la base de datos
+
+  # -------------------------
+  #      INSERT - Happy Path 2
+  # -------------------------
+  Scenario: Registrar un segundo cliente correctamente
+    Given que se tiene un nuevo cliente con Nombre "María", Apellido "González", Teléfono "60987654" y Correo "maria.gonzalez@mail.com"
+    When guardo el cliente en la base de datos
+    Then el sistema debe devolver un Id válido
+    And el cliente con Correo "maria.gonzalez@mail.com" debe existir en la base de datos
+
+  # -------------------------
+  #      INSERT - Unhappy Path
+  # -------------------------
+  Scenario: Fallar al registrar cliente con nombre inválido
+    Given que se tiene un nuevo cliente con Nombre "123invalid", Apellido "López", Teléfono "70123456" y Correo "invalid@mail.com"
+    When intento guardar el cliente en la base de datos
+    Then el sistema debe rechazar el cliente por validación
+
+  # -------------------------
+  #      UPDATE - Happy Path 1
+  # -------------------------
+  Scenario: Actualizar el teléfono de un cliente existente
+    Given que existe un cliente con Id "1", Nombre "Carlos", Apellido "Ramírez", Teléfono "70111222" y Correo "carlos@mail.com"
+    When actualizo el Teléfono del cliente a "60555666"
+    Then el cliente debe tener el nuevo Teléfono "60555666"
+
+  # -------------------------
+  #      UPDATE - Happy Path 2
+  # -------------------------
+  Scenario: Actualizar el correo de un cliente existente
+    Given que existe un cliente con Id "2", Nombre "Ana", Apellido "Martínez", Teléfono "70333444" y Correo "ana@mail.com"
+    When actualizo el Correo del cliente a "ana.martinez@newmail.com"
+    Then el cliente debe tener el nuevo Correo "ana.martinez@newmail.com"
+
+  # -------------------------
+  #      UPDATE - Unhappy Path
+  # -------------------------
+  Scenario: Fallar al actualizar cliente con correo inválido
+    Given que existe un cliente con Id "3", Nombre "Luis", Apellido "Torres", Teléfono "70777888" y Correo "luis@mail.com"
+    When intento actualizar el Correo del cliente a "correo-invalido"
+    Then el sistema debe rechazar la actualización por validación
+
+  # -------------------------
+  #       DELETE - Happy Path
+  # -------------------------
+  Scenario: Eliminar un cliente con soft delete
+    Given que existe un cliente con Id "4", Nombre "Pedro", Apellido "Sánchez", Teléfono "70999000" y Correo "pedro@mail.com"
+    When elimino el cliente usando soft delete
+    Then el cliente debe tener Estado igual a "0"
+    And el cliente no debe aparecer en consultas de clientes activos
+
+  # -------------------------
+  #       SELECT ALL - Happy Path
+  # -------------------------
+  Scenario: Listar todos los clientes activos
+    Given que existen varios clientes registrados con estado activo
+    When solicito el listado de todos los clientes
+    Then el sistema debe devolver al menos un registro
+    And todos los clientes deben tener Estado igual a "1"
